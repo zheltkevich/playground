@@ -20,8 +20,15 @@
         "husky": "^8.0.3",
         "lint-staged": "^13.1.2",
         "sass": "^1.58.3",
+        "stylelint": "^15.2.0",
+        "stylelint-config-recommended-vue": "^1.4.0",
+        "stylelint-config-standard": "^30.0.1",
+        "stylelint-config-standard-scss": "^7.0.1",
+        "stylelint-order": "^6.0.2",
+        "stylelint-scss": "^4.4.0",
         "vite": "^4.1.0",
-        "vite-plugin-eslint": "^1.8.1"
+        "vite-plugin-eslint": "^1.8.1",
+        "vite-plugin-stylelint": "^4.2.0"
     },
     "lint-staged": {
         "*.{js,vue}": "npm run lint:js"
