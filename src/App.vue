@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 const foo = ref(1)
+console.log('sfdadsf');
 console.log(foo.value)
 </script>
 

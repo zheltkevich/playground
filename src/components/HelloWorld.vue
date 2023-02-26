@@ -23,7 +23,7 @@ const count = ref(0)
       type="button"
       @click="count++"
     >
-      count is {{ count }}
+      count isdfsdf {{ count }}
     </button>
     <p>
       Edit
