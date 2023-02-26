@@ -24,7 +24,6 @@
         "vite-plugin-eslint": "^1.8.1"
     },
     "lint-staged": {
-        "*.{js,vue}": "npm run lint:js",
-        "*.js": "eslint --cache --fix"
+        "*.{js,vue}": "npm run lint:js"
     }
 }
