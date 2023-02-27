@@ -7,7 +7,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+        "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --quiet --fix src",
+        "lint:css": "stylelint \"./src/**/*.{css,sass,scss,vue}\" --quiet --fix",
         "prepare": "husky install"
     },
     "dependencies": {
@@ -31,6 +32,7 @@
         "vite-plugin-stylelint": "^4.2.0"
     },
     "lint-staged": {
-        "*.{js,vue}": "npm run lint:js"
+        "*.{js,vue}": "npm run lint:js",
+        "*.{css,sass,scss,vue}": "npm run lint:css"
     }
 }
