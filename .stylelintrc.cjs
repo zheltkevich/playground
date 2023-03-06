@@ -4,11 +4,14 @@ module.exports = {
         'stylelint-config-standard-scss',
         'stylelint-config-recommended-vue',
     ],
-    plugins: ['stylelint-scss', 'stylelint-order'],
+    plugins: [
+        'stylelint-scss',
+        'stylelint-order',
+    ],
     rules: {
         // 'font-family-name-quotes': 'always-where-recommended',
-        // 'max-line-length': 160,
-        'alpha-value-notation': 'number',
+        'alpha-value-notation':
+            'number',
         // 'function-no-unknown': [true,
         //     {
         //         ignoreFunctions: [

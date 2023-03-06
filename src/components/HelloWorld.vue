@@ -72,5 +72,7 @@
     .read-the-docs {
         background-color: #ffffff;
         color: #888888;
+        font-family: 'Courier New',
+            Courier, monospace;
     }
 </style>
