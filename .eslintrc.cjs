@@ -17,7 +17,9 @@ module.exports = {
         'vue/no-unused-vars': 'error',
         'quotes': ['error', 'single'],
 
+
         // vue/html
+        'vue/html-indent': ['error', 4],
         'vue/html-quotes': ['error', 'double'],
     }
 }
