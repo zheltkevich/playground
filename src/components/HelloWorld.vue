@@ -1,75 +1,54 @@
 <script setup>
-import { ref } from 'vue'
-
 defineProps({
     msg: {
         type: String,
-        default: '',
+        required: true,
     },
 })
-
-const count = ref(0)
 </script>
 
 <template>
-    <h1>{{ msg }}</h1>
-
-    <div class="card">
-        dgusfvkasdgvf asdgsdg
-        <button
-            v-for="item in 10"
-            :key="item"
-            class="dsjhgsfh"
-            :class="['dhgjdhg']"
-            type="button"
-            @click="count++">
-            count isdfsdf {{ count }}
-        </button>
-        <p>
-            <span>Edit</span>
-            <code>
-                <pre>
-                compon
-        ents/Hel
-                loWorld.vue
-                </pre>
-            </code>
-            to test HMR
-        </p>
-    </div>
-
-    <p>
-        Check out
-        <a
-            href="https://vuejs.org/guide/quick-start.html#local"
-            target="_blank">
-            create-vue
-        </a>
-        , the official Vue + Vite starter
-    </p>
-    <p>
-        Install
-        <a
-            href="https://github.com/johnsoncodehk/volar"
-            target="_blank">
-            Volar
-        </a>
-        in your IDE for a better DX
-    </p>
-    <p class="read-the-docs">
-        Click on the Vite and Vue logos to learn moreClick on the Vite on the
-        Vite and Vue logos to learn more
-    </p>
-    <div>
-        <p>dsgfsdf</p>
-        dsfdsf
+    <div class="greetings">
+        <h1 class="green">{{ msg }}</h1>
+        <h3>
+            You’ve successfully created a project with
+            <a
+                href="https://vitejs.dev/"
+                target="_blank"
+                rel="noopener"
+                >Vite</a
+            >
+            +
+            <a
+                href="https://vuejs.org/"
+                target="_blank"
+                rel="noopener"
+                >Vue 3</a
+            >.
+        </h3>
     </div>
 </template>
 
 <style scoped>
-.read-the-docs {
-    background-color: #a76969;
-    color: #888888;
-    font-family: 'Courier New', Courier, monospace;
+h1 {
+    top: -10px;
+    font-weight: 500;
+    font-size: 2.6rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.greetings h1,
+.greetings h3 {
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    .greetings h1,
+    .greetings h3 {
+        text-align: left;
+    }
 }
 </style>

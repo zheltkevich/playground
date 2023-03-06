@@ -2,16 +2,9 @@ import { createApp } from 'vue'
 import './style.css'
 import './style.scss'
 import App from './App.vue'
+import router from './router/index.js'
 
-createApp(App).mount('#app')
+const app = createApp(App)
 
-// const array = [
-//     'dsihfbkusdhbgf',
-//     'hdgkhd',
-//     '11111111111111111',
-//     'sdfdf',
-//     'askudyhbvgkahcdbvkldhb',
-//     'uhasxgitg76asdygkhub',
-// ]
-
-// console.log(array)
+app.use(router)
+app.mount('#app')

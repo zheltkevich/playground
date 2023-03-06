@@ -1,34 +1,36 @@
 <script setup>
-import { ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
-const foo = ref(1)
+// import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
-// eslint-disable-next-line no-console
-console.log(foo.value)
+// const foo = ref(1)
+
+// // eslint-disable-next-line no-console
+// console.log(foo.value)
 </script>
 
 <template>
     <div>
-        <a
-            href="https://vitejs.dev"
-            target="_blank"
-            @click="console.log('test')">
+        <RouterLink
+            :to="{
+                name: 'home',
+            }">
             <img
                 src="/vite.svg"
                 class="logo"
                 alt="Vite logo" />
-        </a>
-        <a
-            href="https://vuejs.org/"
-            target="_blank">
+        </RouterLink>
+        <RouterLink
+            :to="{
+                name: 'about',
+            }">
             <img
                 src="./assets/vue.svg"
                 class="logo vue"
                 alt="Vue logo" />
-        </a>
+        </RouterLink>
     </div>
 
-    <HelloWorld msg="Vite + Vue" />
+    <RouterView></RouterView>
 </template>
 
 <style scoped>
@@ -40,10 +42,10 @@ console.log(foo.value)
 }
 
 .logo:hover {
-    filter: drop-shadow(0, 0, 2em, #646cffaa);
+    filter: drop-shadow(0, 0, 2em, #664466);
 }
 
 .logo.vue:hover {
-    filter: drop-shadow(0, 0, 2em, #42b883aa);
+    filter: drop-shadow(0, 0, 2em, #42b883);
 }
 </style>
