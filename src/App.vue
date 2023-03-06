@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 const foo = ref(1)
+
+// eslint-disable-next-line no-console
 console.log(foo.value);
 </script>
 
@@ -10,8 +12,10 @@ console.log(foo.value);
         <a
             href="https://vitejs.dev"
             target="_blank"
+            @click="console.log('test')"
         >
             <img
+
                 src="/vite.svg"
                 class="logo"
                 alt="Vite logo"
@@ -28,6 +32,11 @@ console.log(foo.value);
             >
         </a>
     </div>
+
+
+
+
+
     <HelloWorld msg="Vite + Vue" />
 </template>
 
@@ -41,6 +50,11 @@ console.log(foo.value);
 
 .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
+
+
+
+
+
 }
 
 .logo.vue:hover {

@@ -9,43 +9,40 @@ module.exports = {
         'stylelint-order',
     ],
     rules: {
-        'indentation': 4,
-        'linebreaks': 'unix',
-        'max-empty-lines': 1,
-        'font-family-name-quotes': 'always-where-recommended',
-        'max-line-length': 160,
+        // 'font-family-name-quotes': 'always-where-recommended',
+        // 'max-line-length': 160,
         'alpha-value-notation': 'number',
-        'function-no-unknown': [true,
-            {
-                ignoreFunctions: [
-                    'map-get',
-                    'map-merge',
-                    'unquote',
-                ],
-            },
-        ],
-        'keyframes-name-pattern': null,
+        // 'function-no-unknown': [true,
+        //     {
+        //         ignoreFunctions: [
+        //             'map-get',
+        //             'map-merge',
+        //             'unquote',
+        //         ],
+        //     },
+        // ],
+        // 'keyframes-name-pattern': null,
 
-        'declaration-no-important': true,
-        'declaration-block-no-redundant-longhand-properties': null,
-        'no-descending-specificity': null,
+        // 'declaration-no-important': true,
+        // 'declaration-block-no-redundant-longhand-properties': null,
+        // 'no-descending-specificity': null,
 
-        'selector-max-id': 0,
-        'selector-max-compound-selectors': 3,
-        'selector-class-pattern': ['^([a-z]+[\\-_a-z0-9]*[^\\-]|[a-z]+)$'],
+        // 'selector-max-id': 0,
+        // 'selector-max-compound-selectors': 3,
+        // 'selector-class-pattern': ['^([a-z]+[\\-_a-z0-9]*[^\\-]|[a-z]+)$'],
 
-        'color-function-notation': 'modern',
+        // 'color-function-notation': 'modern',
         'color-hex-length': 'long',
-        'color-named': 'never',
+        // 'color-named': 'never',
 
-        
+
         // stylelint-scss
-        'scss/at-rule-no-unknown': true,
-        'scss/at-import-partial-extension': 'always',
-        'scss/at-import-no-partial-leading-underscore': null,
-        'scss/selector-no-redundant-nesting-selector': null,
-        'scss/no-global-function-names': null,
-        'scss/at-rule-conditional-no-parentheses': null,
+        // 'scss/at-rule-no-unknown': true,
+        // 'scss/at-import-partial-extension': 'always',
+        // 'scss/at-import-no-partial-leading-underscore': null,
+        // 'scss/selector-no-redundant-nesting-selector': null,
+        // 'scss/no-global-function-names': null,
+        // 'scss/at-rule-conditional-no-parentheses': null,
 
         // stylelint-order
         'order/order': [

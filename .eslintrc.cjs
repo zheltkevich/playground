@@ -16,7 +16,11 @@ module.exports = {
         // override/add rules settings here, such as:
         'vue/no-unused-vars': 'error',
         'quotes': ['error', 'single'],
-
+        'no-console': [
+            'error', {
+                allow: ['warn', 'error'],
+            },
+        ],
 
         // vue/html
         'vue/html-indent': ['error', 4],
