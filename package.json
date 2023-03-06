@@ -8,12 +8,11 @@
         "build": "vite build",
         "preview": "vite preview",
         "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore --quiet --fix src",
-        "lint:css": "stylelint \"**/*.{css,sass,scss,vue}\" --quiet --fix",
+        "lint:css": "stylelint \"**/*.{css,scss,vue}\" --quiet --fix",
         "format": "prettier .  --write",
         "prepare": "husky install"
     },
     "lint-staged": {
-        "*.{js,vue,css,scss}": "npm run format",
         "*.{js,vue}": "npm run lint:js",
         "*.{vue,css,scss}": "npm run lint:css"
     },

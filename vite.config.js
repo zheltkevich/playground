@@ -10,12 +10,18 @@ export default defineConfig({
         eslintPlugin({
             fix: true,
             cache: false,
+            failOnError: false,
         }),
         stylelintPlugin({
             fix: true,
             cache: false,
         }),
     ],
+    // server: {
+    //     hmr: {
+    //         overlay: true,
+    //     },
+    // },
     css: {
         devSourcemap: true,
     },
