@@ -44,8 +44,7 @@
             target="_blank">
             create-vue
         </a>
-        , the official Vue + Vite
-        starter
+        , the official Vue + Vite starter
     </p>
     <p>
         Install
@@ -57,10 +56,8 @@
         in your IDE for a better DX
     </p>
     <p class="read-the-docs">
-        Click on the Vite and Vue logos
-        to learn moreClick on the Vite
-        on the Vite and Vue logos to
-        learn more
+        Click on the Vite and Vue logos to learn moreClick on the Vite on the
+        Vite and Vue logos to learn more
     </p>
     <div>
         <p>dsgfsdf</p>
@@ -72,7 +69,6 @@
     .read-the-docs {
         background-color: #ffffff;
         color: #888888;
-        font-family: 'Courier New',
-            Courier, monospace;
+        font-family: 'Courier New', Courier, monospace;
     }
 </style>

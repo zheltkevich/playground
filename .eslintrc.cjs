@@ -2,11 +2,7 @@ module.exports = {
     env: {
         node: true,
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:vue/vue3-recommended',
-        'prettier',
-    ],
+    extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'prettier'],
     overrides: [
         {
             files: ['*.html'],
@@ -20,10 +16,7 @@ module.exports = {
         'no-console': [
             'error',
             {
-                allow: [
-                    'warn',
-                    'error',
-                ],
+                allow: ['warn', 'error'],
             },
         ],
     },
