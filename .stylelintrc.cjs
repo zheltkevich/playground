@@ -4,10 +4,7 @@ module.exports = {
         'stylelint-config-standard-scss',
         'stylelint-config-recommended-vue',
     ],
-    plugins: [
-        'stylelint-scss',
-        'stylelint-order',
-    ],
+    plugins: ['stylelint-scss', 'stylelint-order'],
     rules: {
         // 'font-family-name-quotes': 'always-where-recommended',
         // 'max-line-length': 160,
@@ -35,7 +32,6 @@ module.exports = {
         'color-hex-length': 'long',
         // 'color-named': 'never',
 
-
         // stylelint-scss
         // 'scss/at-rule-no-unknown': true,
         // 'scss/at-import-partial-extension': 'always',
@@ -48,8 +44,8 @@ module.exports = {
         'order/order': [
             [
                 {
-                    "type": "at-rule",
-                    "name": "import"
+                    type: 'at-rule',
+                    name: 'import',
                 },
                 'dollar-variables',
                 {
@@ -317,4 +313,4 @@ module.exports = {
             },
         ],
     },
-};
+}

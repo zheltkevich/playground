@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 const foo = ref(1)
 
 // eslint-disable-next-line no-console
-console.log(foo.value);
+console.log(foo.value)
 </script>
 
 <template>
@@ -14,28 +14,12 @@ console.log(foo.value);
             target="_blank"
             @click="console.log('test')"
         >
-            <img
-
-                src="/vite.svg"
-                class="logo"
-                alt="Vite logo"
-            >
+            <img src="/vite.svg" class="logo" alt="Vite logo" />
         </a>
-        <a
-            href="https://vuejs.org/"
-            target="_blank"
-        >
-            <img
-                src="./assets/vue.svg"
-                class="logo vue"
-                alt="Vue logo"
-            >
+        <a href="https://vuejs.org/" target="_blank">
+            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
         </a>
     </div>
-
-
-
-
 
     <HelloWorld msg="Vite + Vue" />
 </template>
@@ -50,11 +34,6 @@ console.log(foo.value);
 
 .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
-
-
-
-
-
 }
 
 .logo.vue:hover {

@@ -2,22 +2,20 @@ module.exports = {
     env: {
         node: true,
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:vue/vue3-recommended',
-    ],
+    extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'prettier'],
     overrides: [
         {
-          'files': ['*.html'],
-          'processor': 'vue/.vue'
-        }
+            files: ['*.html'],
+            processor: 'vue/.vue',
+        },
     ],
     rules: {
         // override/add rules settings here, such as:
         'vue/no-unused-vars': 'error',
-        'quotes': ['error', 'single'],
+        quotes: ['error', 'single'],
         'no-console': [
-            'error', {
+            'error',
+            {
                 allow: ['warn', 'error'],
             },
         ],
@@ -25,5 +23,5 @@ module.exports = {
         // vue/html
         'vue/html-indent': ['error', 4],
         'vue/html-quotes': ['error', 'double'],
-    }
+    },
 }
