@@ -1,3 +1,4 @@
+.husky
 .cache
 dist
 node_modules
