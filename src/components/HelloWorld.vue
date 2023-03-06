@@ -67,7 +67,7 @@ const count = ref(0)
 
 <style scoped>
 .read-the-docs {
-    background-color: #ffffff;
+    background-color: #a76969;
     color: #888888;
     font-family: 'Courier New', Courier, monospace;
 }

@@ -13,6 +13,7 @@
         "prepare": "husky install"
     },
     "lint-staged": {
+        "*.{js,vue,css,scss}": "npm run format",
         "*.{js,vue}": "npm run lint:js",
         "*.{vue,css,scss}": "npm run lint:css"
     },
