@@ -1,14 +1,14 @@
 <script setup>
-    import { ref } from 'vue'
+import { ref } from 'vue'
 
-    defineProps({
-        msg: {
-            type: String,
-            default: '',
-        },
-    })
+defineProps({
+    msg: {
+        type: String,
+        default: '',
+    },
+})
 
-    const count = ref(0)
+const count = ref(0)
 </script>
 
 <template>
@@ -66,9 +66,9 @@
 </template>
 
 <style scoped>
-    .read-the-docs {
-        background-color: #ffffff;
-        color: #888888;
-        font-family: 'Courier New', Courier, monospace;
-    }
+.read-the-docs {
+    background-color: #ffffff;
+    color: #888888;
+    font-family: 'Courier New', Courier, monospace;
+}
 </style>

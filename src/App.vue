@@ -1,10 +1,10 @@
 <script setup>
-    import { ref } from 'vue'
-    import HelloWorld from './components/HelloWorld.vue'
-    const foo = ref(1)
+import { ref } from 'vue'
+import HelloWorld from './components/HelloWorld.vue'
+const foo = ref(1)
 
-    // eslint-disable-next-line no-console
-    console.log(foo.value)
+// eslint-disable-next-line no-console
+console.log(foo.value)
 </script>
 
 <template>
@@ -32,18 +32,18 @@
 </template>
 
 <style scoped>
-    .logo {
-        height: 6em;
-        padding: 1.5em;
-        transition: filter 300ms;
-        will-change: filter;
-    }
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    transition: filter 300ms;
+    will-change: filter;
+}
 
-    .logo:hover {
-        filter: drop-shadow(0 0 2em #646cffaa);
-    }
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
 
-    .logo.vue:hover {
-        filter: drop-shadow(0 0 2em #42b883aa);
-    }
+.logo.vue:hover {
+    filter: drop-shadow(0 0 2em #42b883aa);
+}
 </style>

@@ -10,8 +10,6 @@ module.exports = {
         },
     ],
     rules: {
-        // override/add rules settings here, such as:
-        'vue/no-unused-vars': 'error',
         'quotes': ['error', 'single'],
         'no-console': [
             'error',
@@ -19,5 +17,8 @@ module.exports = {
                 allow: ['warn', 'error'],
             },
         ],
+
+        // vue
+        'vue/no-unused-vars': 'error',
     },
 }
