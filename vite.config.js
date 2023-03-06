@@ -17,11 +17,6 @@ export default defineConfig({
             cache: false,
         }),
     ],
-    // server: {
-    //     hmr: {
-    //         overlay: true,
-    //     },
-    // },
     css: {
         devSourcemap: true,
     },
