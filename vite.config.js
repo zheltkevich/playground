@@ -8,8 +8,14 @@ import path from 'path'
 export default defineConfig({
     resolve: {
         alias: {
-            '@images': path.resolve(__dirname, './public/images'),
             '@': path.resolve(__dirname, './src'),
+            '@css': path.resolve(__dirname, './src/styles/css'),
+            '@scss': path.resolve(__dirname, './src/styles/scss'),
+            '@layouts': path.resolve(__dirname, './src/components/layouts'),
+            '@ui': path.resolve(__dirname, './src/components/ui'),
+            '@views': path.resolve(__dirname, './src/components/views'),
+            '@assets': path.resolve(__dirname, './public/assets'),
+            '@images': path.resolve(__dirname, './public/images'),
         },
     },
     plugins: [

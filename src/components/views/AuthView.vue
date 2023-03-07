@@ -1,5 +1,5 @@
 <script setup>
-import AppButton from '../components/ui/AppButton.vue'
+import AppButton from '@ui/AppButton.vue'
 </script>
 
 <template>
@@ -43,7 +43,7 @@ import AppButton from '../components/ui/AppButton.vue'
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('@images/kvado-logo-bg.png');
+    background-image: url('@assets/images/kvado-logo-bg.png');
     background-position: center;
 
     &__container {
