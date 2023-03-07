@@ -1,15 +1,12 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import HeaderLayout from '@layouts/HeaderLayout.vue'
+// import { RouterLink } from 'vue-router'
+// import MainHeader from '@blocks/MainHeader.vue'
+// import MainFooter from '@blocks/MainFooter.vue'
+import PageLayout from './components/layouts/PageLayout.vue'
 </script>
 
 <template>
-    <HeaderLayout
-        v-if="$route.name !== 'auth'"
-        class="header">
-        <RouterLink :to="{ name: 'home' }">Home</RouterLink>
-        |
-        <RouterLink :to="{ name: 'about' }">About</RouterLink>
-    </HeaderLayout>
-    <RouterView></RouterView>
+    <PageLayout>
+        <RouterView></RouterView>
+    </PageLayout>
 </template>

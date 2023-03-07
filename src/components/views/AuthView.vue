@@ -49,7 +49,7 @@ import AppButton from '@ui/AppButton.vue'
     &__container {
         display: flex;
         flex-direction: column;
-        padding: 32px;
+        padding: 24px 32px;
         border: 1px solid #eeeeee;
         border-radius: 24px;
         background-color: #ffffff;

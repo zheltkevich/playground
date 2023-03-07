@@ -1,5 +1,7 @@
 <script setup></script>
 
 <template>
-    <main>Home View</main>
+    <div class="container">
+        <h1>HomeView</h1>
+    </div>
 </template>

@@ -11,11 +11,12 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
             '@css': path.resolve(__dirname, './src/styles/css'),
             '@scss': path.resolve(__dirname, './src/styles/scss'),
-            '@layouts': path.resolve(__dirname, './src/components/layouts'),
             '@ui': path.resolve(__dirname, './src/components/ui'),
+            '@blocks': path.resolve(__dirname, './src/components/blocks'),
             '@views': path.resolve(__dirname, './src/components/views'),
             '@assets': path.resolve(__dirname, './public/assets'),
             '@images': path.resolve(__dirname, './public/images'),
+            '@svg': path.resolve(__dirname, './src/components/svg'),
         },
     },
     plugins: [

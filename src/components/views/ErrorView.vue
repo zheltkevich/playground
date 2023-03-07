@@ -1,5 +1,7 @@
 <script setup></script>
 
 <template>
-    <div>ErrorView</div>
+    <div>
+        <h1>ErrorView</h1>
+    </div>
 </template>
