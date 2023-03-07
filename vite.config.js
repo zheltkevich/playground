@@ -8,6 +8,7 @@ import path from 'path'
 export default defineConfig({
     resolve: {
         alias: {
+            '@images': path.resolve(__dirname, './public/images'),
             '@': path.resolve(__dirname, './src'),
         },
     },
@@ -25,5 +26,12 @@ export default defineConfig({
     ],
     css: {
         devSourcemap: true,
+        preprocessorOptions: {
+            scss: {
+                additionalData: `
+                @import '@/styles/scss/mixins/mixins.scss';
+              `,
+            },
+        },
     },
 })

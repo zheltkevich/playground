@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const isAuthenticated = true
+const isAuthenticated = false
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
