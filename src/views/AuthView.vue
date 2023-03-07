@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import AppButton from '../components/ui/AppButton.vue'
+</script>
 
 <template>
     <div class="auth-view">
@@ -9,7 +11,7 @@
                 action="">
                 <input type="text" />
                 <input type="password" />
-                <input type="submit" />
+                <AppButton class="auth-view__submit">Войти</AppButton>
             </form>
             <ul class="auth-view__links">
                 <li class="auth-view__link">
