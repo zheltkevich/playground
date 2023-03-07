@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+const isAuthenticated = true
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -20,6 +21,10 @@ const router = createRouter({
             name: 'auth',
             component: () => import('@/views/AuthView.vue'),
             meta: { requiresAuth: false },
+            beforeEnter: (to, from, next) => {
+                if (isAuthenticated) next({ name: 'home' })
+                else next()
+            },
         },
         {
             path: '/:pathMatch(.*)',
@@ -29,8 +34,6 @@ const router = createRouter({
         },
     ],
 })
-
-const isAuthenticated = true
 
 router.beforeEach((to, from, next) => {
     const { requiresAuth } = to.meta
