@@ -40,15 +40,26 @@ const click = () => emit('click')
 <style lang="scss">
 .app-link {
     display: flex;
-    padding: 8px 16px;
     color: inherit;
+    opacity: 1;
+    user-select: none;
+    transition-timing-function: ease-out;
+    transition-duration: 0.2s;
+    transition-property: color, background-color, opacity, border-color;
 
     &.button {
         text-decoration: none;
     }
 
     &.pushed {
-        opacity: 0.7;
+        opacity: 0.6;
+        transition-duration: 0.1s;
+    }
+
+    svg {
+        .app-link.pushed & {
+            opacity: 0.6;
+        }
     }
 }
 </style>

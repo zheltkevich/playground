@@ -1,16 +1,17 @@
 <script setup>
 import IconLogo from '@svg/images/IconLogo.vue'
+import AppLink from '@ui/AppLink.vue'
 </script>
 
 <template>
     <header class="main-header">
         <div class="main-header__wrapper container">
             <div class="main-header__logo-wrapper">
-                <router-link
+                <AppLink
                     class="main-header__logo-link"
-                    :to="{ name: 'home' }">
+                    :to="'home'">
                     <IconLogo class="main-header__logo" />
-                </router-link>
+                </AppLink>
                 <span class="main-header__logo-text">Vue3 + Vite + Pinia</span>
             </div>
             <div class="main-header__content">

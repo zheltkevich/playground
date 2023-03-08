@@ -7,9 +7,9 @@ import SideNavigation from '@blocks/SideNavigation.vue'
     <MainHeader
         v-if="$route.name !== 'auth'"
         class="header">
-        <router-link :to="{ name: 'home' }">Home</router-link>
+        <!-- <router-link :to="{ name: 'home' }">Home</router-link>
         |
-        <router-link :to="{ name: 'about' }">About</router-link>
+        <router-link :to="{ name: 'about' }">About</router-link> -->
     </MainHeader>
     <main
         class="main"

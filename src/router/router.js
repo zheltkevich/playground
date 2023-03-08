@@ -11,6 +11,13 @@ const router = createRouter({
             meta: { requiresAuth: true },
         },
         {
+            path: '/home',
+            name: 'home2',
+            component: () => import('@views/HomeView.vue'),
+            redirect: { name: 'home' },
+            meta: { requiresAuth: true },
+        },
+        {
             path: '/about',
             name: 'about',
             component: () => import('@views/AboutView.vue'),

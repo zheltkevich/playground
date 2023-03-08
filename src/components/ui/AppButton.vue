@@ -42,9 +42,13 @@ const click = () => {
 .app-button {
     display: flex;
     padding: 8px 16px;
+    user-select: none;
+    transition-timing-function: ease-out;
+    transition-duration: 0.2s;
+    transition-property: color, background-color, opacity, border-color;
 
     &.pushed {
-        opacity: 0.7;
+        opacity: 0.6;
     }
 }
 </style>

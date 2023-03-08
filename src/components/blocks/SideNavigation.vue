@@ -37,7 +37,7 @@ const close = () => (expanded.value = false)
             class="side-navigation__close-button"
             type="button"
             @click="close">
-            X
+            ✕
         </AppButton>
         <h2 class="side-navigation__title">{{ $route.name }}</h2>
         <div class="side-navigation__wrapper">
@@ -71,7 +71,7 @@ const close = () => (expanded.value = false)
     width: 240px;
     padding: 16px;
     border-right: 1px solid var(--gray-light);
-    background-color: var(--main-bg);
+    background-color: #e4e4e4;
 
     &__title {
         margin-bottom: 16px;
@@ -98,32 +98,42 @@ const close = () => (expanded.value = false)
         display: flex;
         flex-grow: 1;
         padding: 8px;
-        border: 1px solid var(--gray);
+        border: 1px solid var(--gray-light);
         border-radius: 8px;
-        background-color: transparent;
+        background-color: var(--main-bg);
         cursor: pointer;
 
         &:hover {
+            border-color: var(--main);
             background-color: var(--gray);
         }
     }
 
     &__close-button {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 8px;
+        right: 8px;
         z-index: 2;
         display: flex;
         align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
         margin: unset;
-        padding: 8px;
-        border: unset;
-        background-color: transparent;
+        padding: unset;
+        border: 1px solid var(--gray);
+        border-radius: 4px;
+        background-color: var(--main-bg);
         color: var(--main);
+        line-height: 1;
         cursor: pointer;
 
         @media (min-width: 1024px) {
             display: none;
+        }
+
+        &:hover {
+            background-color: var(--gray-light);
         }
     }
 
@@ -138,10 +148,15 @@ const close = () => (expanded.value = false)
         padding: unset;
         padding: 4px;
         border: 1px solid var(--gray-light);
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
         background-color: #ffffff;
         color: var(--main);
         box-shadow: 0 4px 8px 0 rgb(34 60 80 / 0.1);
+        opacity: 1;
         cursor: pointer;
+        transition: 0.2s ease-out;
+        transition-property: opacity, background-color;
 
         @media (min-width: 1024px) {
             display: none;
@@ -152,7 +167,8 @@ const close = () => (expanded.value = false)
         }
 
         .side-navigation.expanded & {
-            display: none;
+            opacity: 0;
+            pointer-events: none;
         }
     }
 }
