@@ -1,13 +1,14 @@
 <script setup></script>
 
 <template>
-    <div>
+    <div class="about-view">
         <h1>AboutView</h1>
     </div>
 </template>
 
 <style>
-.about {
+.about-view {
     display: flex;
+    padding: 16px 24px;
 }
 </style>

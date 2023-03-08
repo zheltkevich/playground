@@ -1,15 +1,25 @@
 <script setup>
 import { ref } from 'vue'
-import AppButton from '../ui/AppButton.vue'
+import AppButton from '@ui/AppButton.vue'
+import AppLink from '@ui/AppLink.vue'
 
 const NAVIGATION_ITEMS = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
+    {
+        to: 'home',
+        title: 'Home page',
+    },
+    {
+        to: 'about',
+        title: 'About page',
+    },
+    {
+        to: 'error',
+        title: 'Error page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
 ]
 
 const navigationItems = ref(NAVIGATION_ITEMS)
@@ -36,11 +46,12 @@ const close = () => (expanded.value = false)
                     v-for="(item, i) in navigationItems"
                     :key="i"
                     class="side-navigation__item">
-                    <AppButton
+                    <AppLink
+                        :to="item.to"
                         class="side-navigation__item-button"
                         type="button">
-                        {{ item }}
-                    </AppButton>
+                        {{ item.title }}
+                    </AppLink>
                 </li>
             </ul>
         </div>
