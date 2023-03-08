@@ -47,6 +47,9 @@ module.exports = {
                     name: 'import',
                 },
                 'dollar-variables',
+                'custom-properties',
+                'declarations',
+                'at-rules',
                 {
                     type: 'at-rule',
                     name: 'supports',
@@ -55,9 +58,6 @@ module.exports = {
                     type: 'at-rule',
                     name: 'media',
                 },
-                'custom-properties',
-                'declarations',
-                'at-rules',
                 'rules',
             ],
             {

@@ -5,9 +5,14 @@ import IconLogo from '@svg/images/IconLogo.vue'
 <template>
     <header class="main-header">
         <div class="main-header__wrapper container">
-            <router-link :to="{ name: 'home' }">
-                <IconLogo class="main-header__logo" />
-            </router-link>
+            <div class="main-header__logo-wrapper">
+                <router-link
+                    class="main-header__logo-link"
+                    :to="{ name: 'home' }">
+                    <IconLogo class="main-header__logo" />
+                </router-link>
+                <span class="main-header__logo-text">Vue3 + Vite + Pinia</span>
+            </div>
             <div class="main-header__content">
                 <slot />
             </div>
@@ -17,17 +22,36 @@ import IconLogo from '@svg/images/IconLogo.vue'
 
 <style lang="scss">
 .main-header {
+    position: sticky;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    background-color: #adc3e4;
+    background-color: var(--main-bg);
+    box-shadow: 0 4px 8px 0 rgb(34 60 80 / 0.1);
 
     &__wrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding: 8px 16px;
+    }
+
+    &__logo-wrapper {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    &__logo-link {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo-text {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
     }
 
     &__logo {

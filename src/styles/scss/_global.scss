@@ -32,10 +32,19 @@ h6 {
     margin: unset;
 }
 
+ul {
+    margin-top: unset;
+    margin-bottom: unset;
+    padding-left: unset;
+    list-style: none;
+}
+
 .container {
+    width: 100%;
     max-width: 1280px;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 16px;
-    padding-left: 16px;
+
+    // padding-right: 16px;
+    // padding-left: 16px;
 }
