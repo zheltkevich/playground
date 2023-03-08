@@ -44,7 +44,7 @@ const click = () => emit('click')
     opacity: 1;
     user-select: none;
     transition-timing-function: ease-out;
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
     transition-property: color, background-color, opacity, border-color;
 
     &.button {
@@ -53,7 +53,6 @@ const click = () => emit('click')
 
     &.pushed {
         opacity: 0.6;
-        transition-duration: 0.1s;
     }
 
     svg {

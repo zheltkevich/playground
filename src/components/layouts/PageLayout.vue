@@ -30,7 +30,7 @@ import SideNavigation from '@blocks/SideNavigation.vue'
     background-color: var(--main-bg);
 
     > header {
-        min-height: 40px;
+        min-height: 48px;
     }
 
     > main {
@@ -39,10 +39,6 @@ import SideNavigation from '@blocks/SideNavigation.vue'
         flex-grow: 1;
         box-shadow: 0 4px 8px 0 rgb(34 60 80 / 0.1);
     }
-
-    > footer {
-        min-height: 40px;
-    }
 }
 
 .main {
@@ -50,12 +46,16 @@ import SideNavigation from '@blocks/SideNavigation.vue'
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 0;
         display: flex;
+        width: 100%;
         height: 100%;
         transition: 0.2s ease-out;
         transition-property: transform;
         transform: translateX(-100%);
+
+        @media (min-width: 768px) {
+            width: 240px;
+        }
 
         @media (min-width: 1024px) {
             position: static;

@@ -68,7 +68,6 @@ const close = () => (expanded.value = false)
 .side-navigation {
     display: flex;
     flex-direction: column;
-    width: 240px;
     padding: 16px;
     border-right: 1px solid var(--gray-light);
     background-color: #e4e4e4;
@@ -114,7 +113,7 @@ const close = () => (expanded.value = false)
         top: 8px;
         right: 8px;
         z-index: 2;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         width: 24px;
@@ -127,6 +126,10 @@ const close = () => (expanded.value = false)
         color: var(--main);
         line-height: 1;
         cursor: pointer;
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
 
         @media (min-width: 1024px) {
             display: none;
@@ -141,7 +144,7 @@ const close = () => (expanded.value = false)
         position: absolute;
         top: 16px;
         left: 100%;
-        display: flex;
+        display: none;
         align-items: center;
         height: 40px;
         margin: unset;
@@ -157,6 +160,10 @@ const close = () => (expanded.value = false)
         cursor: pointer;
         transition: 0.2s ease-out;
         transition-property: opacity, background-color;
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
 
         @media (min-width: 1024px) {
             display: none;

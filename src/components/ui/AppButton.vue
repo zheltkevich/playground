@@ -41,10 +41,11 @@ const click = () => {
 <style lang="scss">
 .app-button {
     display: flex;
-    padding: 8px 16px;
+    padding: unset;
+    border: unset;
     user-select: none;
     transition-timing-function: ease-out;
-    transition-duration: 0.2s;
+    transition-duration: 0.1s;
     transition-property: color, background-color, opacity, border-color;
 
     &.pushed {

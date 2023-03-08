@@ -11,7 +11,7 @@
             width="80"
             height="80"
             rx="24"
-            fill="#6979F8" />
+            fill="#727ddd" />
         <path
             fill-rule="evenodd"
             clip-rule="evenodd"
