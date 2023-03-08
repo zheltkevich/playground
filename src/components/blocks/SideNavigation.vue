@@ -74,6 +74,7 @@ const close = () => (expanded.value = false)
 
     &__title {
         margin-bottom: 16px;
+        word-wrap: break-word;
     }
 
     &__wrapper {
