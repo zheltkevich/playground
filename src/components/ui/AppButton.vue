@@ -47,7 +47,8 @@ const click = () => {
     user-select: none;
     transition-timing-function: ease-out;
     transition-duration: 0.1s;
-    transition-property: color, background-color, opacity, border-color;
+    transition-property: color, background-color, opacity, border-color,
+        transform;
 
     &.pushed {
         opacity: 0.6;

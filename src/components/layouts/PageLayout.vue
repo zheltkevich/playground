@@ -30,6 +30,7 @@ import SideNavigation from '@blocks/SideNavigation.vue'
     background-color: var(--main-bg);
 
     > header {
+        z-index: 2;
         min-height: 48px;
     }
 

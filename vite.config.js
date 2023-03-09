@@ -18,6 +18,9 @@ export default defineConfig({
             '@images': path.resolve(__dirname, './public/images'),
             '@svg': path.resolve(__dirname, './src/components/svg'),
             '@store': path.resolve(__dirname, './src/store'),
+            '@api': path.resolve(__dirname, './src/api'),
+            '@utils': path.resolve(__dirname, './src/utils'),
+            '@router': path.resolve(__dirname, './src/router'),
         },
     },
     plugins: [

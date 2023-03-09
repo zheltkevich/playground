@@ -1,4 +1,5 @@
 <script setup>
+import { useMovieStore } from '@store/MovieStore.js'
 import AppButton from '../ui/AppButton.vue'
 
 defineProps({
@@ -8,6 +9,8 @@ defineProps({
         default: () => ({}),
     },
 })
+
+const movieStore = useMovieStore()
 </script>
 
 <template>
@@ -25,11 +28,13 @@ defineProps({
             </div>
             <div class="movie-item__buttons">
                 <AppButton
-                    class="movie-item__button movie-item__button--action">
+                    class="movie-item__button movie-item__button--action"
+                    @click="movieStore.toggleWatched(movie.id)">
                     {{ movie.isWatched ? 'Просмотрено' : 'Непросмотрено' }}
                 </AppButton>
                 <AppButton
-                    class="movie-item__button movie-item__button--delete">
+                    class="movie-item__button movie-item__button--delete"
+                    @click="movieStore.deleteMovie(movie.id)">
                     Удалить
                 </AppButton>
             </div>

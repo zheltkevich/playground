@@ -1,5 +1,15 @@
 <script setup>
 import AppButton from '@ui/AppButton.vue'
+import { useAuthStore } from '@store/AuthStore'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+const submit = () => {
+    authStore.login()
+    router.push({ name: 'home' })
+}
 </script>
 
 <template>
@@ -8,10 +18,15 @@ import AppButton from '@ui/AppButton.vue'
             <h1 class="auth-view__title">Личный кабинет</h1>
             <form
                 class="auth-view__form"
-                action="">
+                action=""
+                @submit.prevent>
                 <input type="text" />
                 <input type="password" />
-                <AppButton class="auth-view__submit">Войти</AppButton>
+                <AppButton
+                    class="auth-view__submit"
+                    @click="submit"
+                    >Войти</AppButton
+                >
             </form>
             <ul class="auth-view__links">
                 <li class="auth-view__link">

@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useUiStore } from '@store/UiStore.js'
+import { useAuthStore } from '@store/AuthStore.js'
+import { useRouter } from 'vue-router'
 import AppButton from '@ui/AppButton.vue'
 import AppLink from '@ui/AppLink.vue'
 
@@ -25,6 +27,12 @@ const NAVIGATION_ITEMS = [
 
 const navigationItems = ref(NAVIGATION_ITEMS)
 const uiStore = useUiStore()
+const authStore = useAuthStore()
+const router = useRouter()
+const logOut = () => {
+    authStore.logOut()
+    router.push({ name: 'auth' })
+}
 
 const show = () => uiStore.showNavigation()
 const hide = () => uiStore.hideNavigation()
@@ -62,11 +70,18 @@ const hide = () => uiStore.hideNavigation()
             @click="show">
             &#5125;
         </AppButton>
+        <AppButton
+            type="button"
+            class="side-navigation__logout-button"
+            @click="logOut">
+            Logout
+        </AppButton>
     </aside>
 </template>
 
 <style lang="scss">
 .side-navigation {
+    z-index: 1;
     display: flex;
     flex-shrink: 0;
     flex-direction: column;
@@ -139,6 +154,7 @@ const hide = () => uiStore.hideNavigation()
         }
 
         &:hover {
+            border-color: var(--main);
             background-color: var(--gray);
         }
     }
@@ -161,8 +177,9 @@ const hide = () => uiStore.hideNavigation()
         box-shadow: 0 4px 8px 0 rgb(34 60 80 / 0.1);
         opacity: 1;
         cursor: pointer;
-        transition: 0.2s ease-out;
-        transition-property: opacity, background-color;
+        transition: 0.3s ease-out;
+        transition-property: opacity, background-color, border-color, transform;
+        transform: scaleX(1) translateX(0);
 
         @media (min-width: 768px) {
             display: flex;
@@ -173,12 +190,15 @@ const hide = () => uiStore.hideNavigation()
         }
 
         &:hover {
+            border-color: var(--main);
             background-color: var(--gray);
+            transform: scale(1.2) translateX(2px);
         }
 
         .side-navigation.expanded & {
             opacity: 0;
             pointer-events: none;
+            transform: scaleX(0) translateX(-100%);
         }
     }
 }

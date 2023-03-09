@@ -3,6 +3,9 @@ module.exports = {
         node: true,
     },
     extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'prettier'],
+    parserOptions: {
+        ecmaVersion: 2022,
+    },
     overrides: [
         {
             files: ['*.html'],

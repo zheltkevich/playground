@@ -1,9 +1,13 @@
 <script setup>
 import { useMovieStore } from '@store/MovieStore.js'
-import AppButton from '../ui/AppButton.vue'
-import MovieItem from './MovieItem.vue'
+import AppButton from '@ui/AppButton.vue'
+import MovieItem from '@blocks/MovieItem.vue'
+import MoviesSearch from '@blocks/MoviesSearch.vue'
 
 const movieStore = useMovieStore()
+const setTab = (id) => {
+    movieStore.setActiveTab(id)
+}
 </script>
 
 <template>
@@ -11,12 +15,12 @@ const movieStore = useMovieStore()
         <div class="tabs">
             <AppButton
                 class="tabs__tab tabs__tab--favorite"
-                @click="movieStore.setActiveTab(1)">
+                @click="setTab(1)">
                 Favorite
             </AppButton>
             <AppButton
                 class="tabs__tab tabs__tab--search"
-                @click="movieStore.setActiveTab(2)">
+                @click="setTab(2)">
                 Search
             </AppButton>
         </div>
@@ -48,6 +52,7 @@ const movieStore = useMovieStore()
                 v-else
                 class="favorite-movies__search-container">
                 <h2>Search</h2>
+                <MoviesSearch></MoviesSearch>
             </div>
         </div>
     </div>

@@ -9,6 +9,10 @@
 <style lang="scss">
 .error-view {
     display: flex;
-    padding: 16px 24px;
+    padding: 16px;
+
+    @media (min-width: 768px) {
+        padding: 24px;
+    }
 }
 </style>

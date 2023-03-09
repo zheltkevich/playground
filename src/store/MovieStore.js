@@ -20,7 +20,7 @@ export const useMovieStore = defineStore('movieStore', {
                 isWatched: true,
             },
         ],
-        activeTab: 1,
+        activeTab: 2,
     }),
     getters: {
         watchedMovies() {
@@ -39,6 +39,13 @@ export const useMovieStore = defineStore('movieStore', {
     actions: {
         setActiveTab(id) {
             this.activeTab = id
+        },
+        toggleWatched(id) {
+            const index = this.movies.findIndex((element) => element.id === id)
+            this.movies[index].isWatched = !this.movies[index].isWatched
+        },
+        deleteMovie(id) {
+            this.movies = this.movies.filter((element) => element.id !== id)
         },
     },
 })
