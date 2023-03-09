@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { useUiStore } from '@store/UiStore.js'
 import AppButton from '@ui/AppButton.vue'
 import AppLink from '@ui/AppLink.vue'
 
@@ -23,20 +24,20 @@ const NAVIGATION_ITEMS = [
 ]
 
 const navigationItems = ref(NAVIGATION_ITEMS)
-const expanded = ref(false)
+const uiStore = useUiStore()
 
-const expand = () => (expanded.value = true)
-const close = () => (expanded.value = false)
+const show = () => uiStore.showNavigation()
+const hide = () => uiStore.hideNavigation()
 </script>
 
 <template>
     <aside
         class="side-navigation"
-        :class="{ expanded }">
+        :class="{ expanded: uiStore.isNavigationOpened }">
         <AppButton
             class="side-navigation__close-button"
             type="button"
-            @click="close">
+            @click="hide">
             ✕
         </AppButton>
         <h2 class="side-navigation__title">{{ $route.name }}</h2>
@@ -58,7 +59,7 @@ const close = () => (expanded.value = false)
         <AppButton
             type="button"
             class="side-navigation__expand-button"
-            @click="expand">
+            @click="show">
             &#5125;
         </AppButton>
     </aside>

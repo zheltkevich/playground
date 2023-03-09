@@ -1,11 +1,11 @@
 <script setup>
-import FavouriteMovies from '@blocks/FavouriteMovies.vue'
+import FavoriteMovies from '@blocks/FavoriteMovies.vue'
 </script>
 
 <template>
     <div class="homeview">
         <h1>HomeView</h1>
-        <FavouriteMovies></FavouriteMovies>
+        <FavoriteMovies></FavoriteMovies>
     </div>
 </template>
 

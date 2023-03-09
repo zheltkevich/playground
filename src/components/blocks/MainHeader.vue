@@ -1,14 +1,15 @@
 <script setup>
+import { useUiStore } from '@store/UiStore.js'
+
 import IconLogo from '@svg/images/IconLogo.vue'
 import AppLink from '@ui/AppLink.vue'
 import IconBurgerMenu from '@svg/icons/IconBurgerMenu.vue'
-import { ref } from 'vue'
 import AppButton from '@ui/AppButton.vue'
 
-const menuOpened = ref(false)
+const uiStore = useUiStore()
 
 const burgerClick = () => {
-    menuOpened.value = !menuOpened.value
+    uiStore.toggleNavigation()
 }
 </script>
 
@@ -29,7 +30,8 @@ const burgerClick = () => {
             <AppButton
                 class="main-header__burger"
                 @click="burgerClick">
-                <IconBurgerMenu :active="menuOpened"></IconBurgerMenu>
+                <IconBurgerMenu
+                    :active="uiStore.isNavigationOpened"></IconBurgerMenu>
             </AppButton>
         </div>
     </header>

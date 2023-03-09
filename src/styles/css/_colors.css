@@ -5,6 +5,9 @@
     --gray: #d4d4d4;
     --white: #ffffff;
     --accept: #ddf5c7;
+    --accept-hover: #c8e7aa;
     --warning: #f1e9bb;
+    --warning-hover: #e4d897;
     --danger: #f5cdc7;
+    --danger-hover: #ebb9b1;
 }

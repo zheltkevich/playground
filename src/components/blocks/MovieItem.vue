@@ -79,10 +79,18 @@ defineProps({
 
         &--action {
             background-color: var(--accept);
+
+            &:hover {
+                background-color: var(--accept-hover);
+            }
         }
 
         &--delete {
             background-color: var(--danger);
+
+            &:hover {
+                background-color: var(--danger-hover);
+            }
         }
     }
 }

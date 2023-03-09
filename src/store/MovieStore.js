@@ -7,7 +7,7 @@ export const useMovieStore = defineStore('movieStore', {
                 id: 1,
                 original_title: 'Title 1',
                 overview: 'lorem ipsum 1',
-                poster_path: '111.png',
+                poster_path: '/gh4cZbhZxyTbgxQPxD0dOudNPTn.jpg',
                 release_date: '01-05-2001',
                 isWatched: false,
             },
@@ -20,5 +20,25 @@ export const useMovieStore = defineStore('movieStore', {
                 isWatched: true,
             },
         ],
+        activeTab: 1,
     }),
+    getters: {
+        watchedMovies() {
+            return this.movies.filter((element) => element.isWatched)
+        },
+        totalMoviesCount() {
+            return this.movies.length
+        },
+        watchedMoviesCount() {
+            const watchedMovies = this.movies.filter(
+                (element) => element.isWatched
+            )
+            return watchedMovies.length
+        },
+    },
+    actions: {
+        setActiveTab(id) {
+            this.activeTab = id
+        },
+    },
 })

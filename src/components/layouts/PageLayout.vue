@@ -51,10 +51,15 @@ import SideNavigation from '@blocks/SideNavigation.vue'
         height: 100%;
         transition: 0.2s ease-out;
         transition-property: transform;
-        transform: translateX(-100%);
+        transform: translateY(-100%);
 
         @media (min-width: 768px) {
             width: 240px;
+            transform: translateX(-100%);
+
+            &.expanded {
+                transform: translateX(0);
+            }
         }
 
         @media (min-width: 1024px) {
@@ -64,7 +69,7 @@ import SideNavigation from '@blocks/SideNavigation.vue'
         }
 
         &.expanded {
-            transform: translateX(0);
+            transform: translateY(0);
         }
     }
 }
