@@ -43,7 +43,7 @@ import AppButton from '@ui/AppButton.vue'
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('@assets/images/kvado-logo-bg.png');
+    background-image: url('@assets/images/logo.png');
     background-position: center;
 
     &__container {
