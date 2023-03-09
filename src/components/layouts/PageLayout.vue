@@ -49,17 +49,15 @@ import SideNavigation from '@blocks/SideNavigation.vue'
         display: flex;
         width: 100%;
         height: 100%;
-        transition: 0.2s ease-out;
-        transition-property: transform;
+        opacity: 0;
+        transition: 0.3s ease-out;
+        transition-property: transform, opacity;
         transform: translateY(-100%);
 
         @media (min-width: 768px) {
             width: 240px;
-            transform: translateX(-100%);
-
-            &.expanded {
-                transform: translateX(0);
-            }
+            opacity: 1;
+            transform: translateY(0) translateX(-100%);
         }
 
         @media (min-width: 1024px) {
@@ -69,7 +67,12 @@ import SideNavigation from '@blocks/SideNavigation.vue'
         }
 
         &.expanded {
+            opacity: 1;
             transform: translateY(0);
+
+            @media (min-width: 768px) {
+                transform: translateX(0);
+            }
         }
     }
 }
