@@ -1,7 +1,10 @@
 :root {
-    --main: #337ab7;
+    --main: #4754ce;
     --main-bg: #e7e7e7;
     --bg-green: #5cb85c;
-    --gray-light: #d4d4d4;
     --gray: #d4d4d4;
+    --white: #ffffff;
+    --accept: #ddf5c7;
+    --warning: #f1e9bb;
+    --danger: #f5cdc7;
 }

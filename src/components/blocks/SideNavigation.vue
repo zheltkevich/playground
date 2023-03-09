@@ -67,9 +67,10 @@ const close = () => (expanded.value = false)
 <style lang="scss">
 .side-navigation {
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
     padding: 16px;
-    border-right: 1px solid var(--gray-light);
+    border-right: 1px solid var(--gray);
     background-color: #e4e4e4;
 
     &__title {
@@ -98,7 +99,7 @@ const close = () => (expanded.value = false)
         display: flex;
         flex-grow: 1;
         padding: 8px;
-        border: 1px solid var(--gray-light);
+        border: 1px solid var(--gray);
         border-radius: 8px;
         background-color: var(--main-bg);
         cursor: pointer;
@@ -137,7 +138,7 @@ const close = () => (expanded.value = false)
         }
 
         &:hover {
-            background-color: var(--gray-light);
+            background-color: var(--gray);
         }
     }
 
@@ -151,7 +152,7 @@ const close = () => (expanded.value = false)
         margin: unset;
         padding: unset;
         padding: 4px;
-        border: 1px solid var(--gray-light);
+        border: 1px solid var(--gray);
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
         background-color: #ffffff;

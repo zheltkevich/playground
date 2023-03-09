@@ -43,6 +43,7 @@ const click = () => {
     display: flex;
     padding: unset;
     border: unset;
+    cursor: pointer;
     user-select: none;
     transition-timing-function: ease-out;
     transition-duration: 0.1s;

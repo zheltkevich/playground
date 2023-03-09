@@ -74,6 +74,7 @@ const burgerClick = () => {
     &__logo {
         width: 24px;
         height: 24px;
+        color: var(--main);
     }
 
     &__content {
@@ -81,9 +82,10 @@ const burgerClick = () => {
     }
 
     &__burger {
-        border: 1px solid var(--gray-light);
+        border: 1px solid var(--gray);
         border-radius: 8px;
         background-color: var(--main-bg);
+        color: var(--main);
 
         @media (min-width: 768px) {
             display: none;

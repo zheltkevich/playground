@@ -11,7 +11,7 @@
             width="80"
             height="80"
             rx="24"
-            fill="#727ddd" />
+            fill="currentColor" />
         <path
             fill-rule="evenodd"
             clip-rule="evenodd"
