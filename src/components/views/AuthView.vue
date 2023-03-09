@@ -1,14 +1,11 @@
 <script setup>
 import AppButton from '@ui/AppButton.vue'
 import { useAuthStore } from '@store/AuthStore'
-import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
-const router = useRouter()
 
 const submit = () => {
     authStore.login()
-    router.push({ name: 'home' })
 }
 </script>
 
@@ -20,13 +17,18 @@ const submit = () => {
                 class="auth-view__form"
                 action=""
                 @submit.prevent>
-                <input type="text" />
-                <input type="password" />
+                <input
+                    class="auth-view__input"
+                    type="text" />
+                <input
+                    class="auth-view__input"
+                    type="password" />
                 <AppButton
                     class="auth-view__submit"
-                    @click="submit"
-                    >Войти</AppButton
-                >
+                    :loading="authStore.loading"
+                    @click="submit">
+                    Войти
+                </AppButton>
             </form>
             <ul class="auth-view__links">
                 <li class="auth-view__link">
@@ -64,11 +66,66 @@ const submit = () => {
     &__container {
         display: flex;
         flex-direction: column;
+        row-gap: 16px;
         padding: 24px 32px;
         border: 1px solid #eeeeee;
         border-radius: 24px;
         background-color: #ffffff;
         box-shadow: 0 4px 8px 0 rgb(34 60 80 / 0.1);
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__input {
+        padding: 8px;
+        border: 1px solid var(--gray);
+        border-radius: 8px;
+        transition: 0.2s ease-out;
+        transition-property: border-color;
+
+        &:focus,
+        &:hover {
+            border-color: var(--main);
+            outline: none;
+        }
+    }
+
+    &__submit {
+        min-height: 20px;
+        padding: 8px 16px;
+        border: 1px solid var(--gray);
+        border-radius: 8px;
+        background-color: var(--main-bg);
+        line-height: 16px;
+        cursor: pointer;
+
+        &:hover {
+            border-color: var(--main);
+            background-color: var(--gray);
+        }
+    }
+
+    &__links,
+    &__app-links {
+        display: flex;
+        font-size: 12px;
+    }
+
+    &__links {
+        flex-direction: column;
+    }
+
+    &__app-links {
+        display: flex;
+    }
+
+    &__app-link {
+        flex-grow: 1;
+        flex-basis: 50%;
     }
 }
 </style>

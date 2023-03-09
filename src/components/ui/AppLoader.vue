@@ -1,18 +1,24 @@
 <script setup>
-defineProps({
+const props = defineProps({
     size: {
         type: String,
         default: '60px',
+    },
+    type: {
+        type: String,
+        default: 'big',
+        validator(value) {
+            return ['big', 'small'].includes(value)
+        },
     },
 })
 </script>
 
 <template>
-    <div class="app-loader-container">
-        <div
-            class="app-loader"
-            :style="[`--loader-size: ${size};`]"></div>
-    </div>
+    <div
+        class="app-loader"
+        :style="[`--loader-size: ${size};`]"
+        :class="[props.type]"></div>
 </template>
 
 <style lang="scss">
@@ -36,11 +42,7 @@ defineProps({
     }
 }
 
-.app-loader-container {
-    position: absolute;
-}
-
-.app-loader {
+.app-loader.big {
     position: relative;
     z-index: 11;
     display: block;
@@ -76,5 +78,13 @@ defineProps({
         border-radius: 50%;
         animation: spin 1s linear infinite;
     }
+}
+
+.app-loader.small {
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border: 2px dashed var(--main);
+    border-radius: 50%;
+    animation: spin 1.7s linear infinite;
 }
 </style>

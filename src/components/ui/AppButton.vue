@@ -1,11 +1,16 @@
 <script setup>
 import { ref } from 'vue'
+import AppLoader from '@ui/AppLoader.vue'
 defineProps({
     type: {
         type: String,
         default: 'button',
     },
     disabled: {
+        type: Boolean,
+        default: false,
+    },
+    loading: {
         type: Boolean,
         default: false,
     },
@@ -34,13 +39,23 @@ const click = () => {
         @mousedown="mousedown"
         @mouseup="mouseup"
         @click="click">
-        <slot></slot>
+        <span
+            v-if="loading"
+            class="app-button__preloader-container">
+            <AppLoader
+                size="100%"
+                type="small">
+            </AppLoader>
+        </span>
+        <slot v-else></slot>
     </button>
 </template>
 
 <style lang="scss">
 .app-button {
     display: flex;
+    align-items: center;
+    justify-content: center;
     padding: unset;
     border: unset;
     cursor: pointer;
@@ -52,6 +67,14 @@ const click = () => {
 
     &.pushed {
         opacity: 0.6;
+    }
+
+    &__preloader-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
     }
 }
 </style>
