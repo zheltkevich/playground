@@ -83,10 +83,10 @@ const movieStore = useMovieStore()
         border-radius: 8px;
 
         &--action {
-            background-color: var(--accept);
+            background-color: var(--access);
 
             &:hover {
-                background-color: var(--accept-hover);
+                background-color: var(--access-hover);
             }
         }
 

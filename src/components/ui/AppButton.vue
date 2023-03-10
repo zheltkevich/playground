@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import AppLoader from '@ui/AppLoader.vue'
-defineProps({
+const props = defineProps({
     type: {
         type: String,
         default: 'button',
@@ -16,8 +16,11 @@ defineProps({
     },
 })
 const emit = defineEmits(['click'])
-
 const pushed = ref(false)
+
+const isDisabled = computed(() => {
+    return props.disabled || props.loading
+})
 
 const mousedown = () => (pushed.value = true)
 const mouseup = () => (pushed.value = false)
@@ -30,9 +33,9 @@ const click = () => emit('click')
 <template>
     <button
         class="app-button"
-        :class="{ pushed, loading }"
+        :class="{ pushed, loading, disabled: isDisabled }"
         :type="type"
-        :disabled="disabled"
+        :disabled="isDisabled"
         @mousedown="mousedown"
         @mouseup="mouseup"
         @touchstart="touchstart"
@@ -60,12 +63,19 @@ const click = () => emit('click')
     justify-content: center;
     padding: unset;
     border: unset;
-    cursor: pointer;
     user-select: none;
     transition-timing-function: ease-out;
     transition-duration: 0.1s;
     transition-property: color, background-color, opacity, border-color,
         transform;
+
+    :disabled {
+        pointer-events: none;
+    }
+
+    &:hover:not(:disabled, .disabled) {
+        cursor: pointer;
+    }
 
     &.pushed {
         opacity: 0.6;

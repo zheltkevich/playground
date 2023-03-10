@@ -25,14 +25,12 @@ const submit = () => {
                     type="password" />
                 <div class="auth-view__buttons">
                     <AppButton
-                        class="auth-view__button auth-view__button-submit"
+                        class="auth-view__button auth-view__button--submit"
                         :loading="authStore.loading"
                         @click="submit">
                         Войти
                     </AppButton>
-                    <AppButton
-                        class="auth-view__button auth-view__button-reg"
-                        @click="submit">
+                    <AppButton class="auth-view__button auth-view__button--reg">
                         Зарегистрироваться
                     </AppButton>
                 </div>
@@ -43,14 +41,6 @@ const submit = () => {
                 </li>
                 <li class="auth-view__link">
                     <a href="#">Обратиться в службу поддержки</a>
-                </li>
-            </ul>
-            <ul class="auth-view__app-links">
-                <li class="auth-view__app-link">
-                    <a href="#">Apple</a>
-                </li>
-                <li class="auth-view__app-link">
-                    <a href="#">Android</a>
                 </li>
             </ul>
         </div>
@@ -64,7 +54,7 @@ const submit = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('@assets/images/logo.png');
+    background-color: #cfd1e7;
     background-position: center;
 
     &__container {
@@ -72,9 +62,9 @@ const submit = () => {
         flex-direction: column;
         row-gap: 16px;
         padding: 24px 32px;
-        border: 1px solid #eeeeee;
+        border: 1px solid var(--gray);
         border-radius: 24px;
-        background-color: #ffffff;
+        background-color: var(--main-bg);
         box-shadow: 0 4px 8px 0 rgb(34 60 80 / 0.1);
     }
 
@@ -105,7 +95,7 @@ const submit = () => {
 
     &__button {
         flex-grow: 1;
-        flex-shrink: 0;
+        flex-shrink: 1;
         flex-basis: 80px;
         min-height: 20px;
         padding: 8px 16px;
@@ -113,31 +103,32 @@ const submit = () => {
         border-radius: 8px;
         background-color: var(--main-bg);
         line-height: 16px;
-        cursor: pointer;
 
-        &:hover {
+        &:hover:not(.disabled) {
             border-color: var(--main);
-            background-color: var(--gray);
+        }
+
+        &--submit {
+            background-color: var(--access);
+
+            &:hover:not(.disabled) {
+                background-color: var(--access-hover);
+            }
+        }
+
+        &--reg {
+            background-color: var(--white);
+
+            &:hover:not(.disabled) {
+                background-color: var(--gray-hover);
+            }
         }
     }
 
-    &__links,
-    &__app-links {
-        display: flex;
-        font-size: 12px;
-    }
-
     &__links {
-        flex-direction: column;
-    }
-
-    &__app-links {
         display: flex;
-    }
-
-    &__app-link {
-        flex-grow: 1;
-        flex-basis: 50%;
+        flex-direction: column;
+        font-size: 12px;
     }
 }
 </style>
