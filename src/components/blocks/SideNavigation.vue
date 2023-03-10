@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useUiStore } from '@store/UiStore.js'
 import { useAuthStore } from '@store/AuthStore.js'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import AppButton from '@ui/AppButton.vue'
 import AppLink from '@ui/AppLink.vue'
 
@@ -23,112 +23,13 @@ const NAVIGATION_ITEMS = [
         to: 'auth',
         title: 'Auth page',
     },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
-    {
-        to: 'auth',
-        title: 'Auth page',
-    },
 ]
 
 const navigationItems = ref(NAVIGATION_ITEMS)
 const uiStore = useUiStore()
 const authStore = useAuthStore()
 const router = useRouter()
+const route = useRoute()
 const logOut = () => {
     authStore.logOut()
     router.push({ name: 'auth' })
@@ -136,6 +37,11 @@ const logOut = () => {
 
 const show = () => uiStore.showNavigation()
 const hide = () => uiStore.hideNavigation()
+const setActive = (item) => {
+    return {
+        active: item.to === route.name,
+    }
+}
 </script>
 
 <template>
@@ -154,13 +60,16 @@ const hide = () => uiStore.hideNavigation()
             @click="show">
             &#5125;
         </AppButton>
-        <h2 class="side-navigation__title">{{ $route.name }}</h2>
+        <header class="side-navigation__header">
+            <h2 class="side-navigation__title">{{ $route.name }}</h2>
+        </header>
         <div class="side-navigation__wrapper">
             <ul class="side-navigation__list">
                 <li
                     v-for="(item, i) in navigationItems"
                     :key="i"
-                    class="side-navigation__item">
+                    class="side-navigation__item"
+                    :class="setActive(item)">
                     <AppLink
                         :to="item.to"
                         class="side-navigation__item-button"
@@ -170,12 +79,14 @@ const hide = () => uiStore.hideNavigation()
                 </li>
             </ul>
         </div>
-        <AppButton
-            type="button"
-            class="side-navigation__logout-button"
-            @click="logOut">
-            Logout
-        </AppButton>
+        <footer class="side-navigation__footer">
+            <AppButton
+                type="button"
+                class="side-navigation__logout-button"
+                @click="logOut">
+                Logout
+            </AppButton>
+        </footer>
     </aside>
 </template>
 
@@ -189,25 +100,35 @@ const hide = () => uiStore.hideNavigation()
     row-gap: 16px;
     padding-top: 24px;
     padding-bottom: 24px;
-    border-right: 1px solid var(--gray);
-    background-color: #e4e4e4;
+    border-right: 1px solid transparent;
+    background-color: var(--main-bg);
 
-    &__title {
+    @media (min-width: 768px) {
+        border-right-color: var(--gray);
+    }
+
+    &__header {
+        display: flex;
         padding-right: 16px;
         padding-left: 16px;
+    }
+
+    &__title {
         word-wrap: break-word;
     }
 
     &__wrapper {
         position: relative;
         display: flex;
+        flex-grow: 1;
+        flex-direction: column;
         overflow-x: hidden;
-        overflow-y: scroll;
-        padding-right: 16px;
-        padding-left: 16px;
+        overflow-y: auto;
+        padding: 16px;
+        border-top: 1px solid var(--gray);
+        border-bottom: 1px solid var(--gray);
 
-        // /* stylelint-disable-next-line at-rule-no-unknown */
-        @include scrollbar(false, #e4e4e4);
+        @include scrollbar(false, var(--main-bg));
     }
 
     &__list {
@@ -215,8 +136,6 @@ const hide = () => uiStore.hideNavigation()
         flex-grow: 1;
         flex-direction: column;
         row-gap: 8px;
-        padding-top: 8px;
-        padding-bottom: 8px;
     }
 
     &__item {
@@ -230,12 +149,17 @@ const hide = () => uiStore.hideNavigation()
         padding: 8px;
         border: 1px solid var(--gray);
         border-radius: 8px;
-        background-color: var(--main-bg);
+        background-color: var(--white);
         cursor: pointer;
 
         &:hover {
             border-color: var(--main);
-            background-color: var(--gray);
+            background-color: var(--gray-hover);
+        }
+
+        .side-navigation__item.active & {
+            border-color: var(--main);
+            color: var(--main);
         }
     }
 
@@ -253,7 +177,7 @@ const hide = () => uiStore.hideNavigation()
         padding: unset;
         border: 1px solid var(--gray);
         border-radius: 4px;
-        background-color: var(--main-bg);
+        background-color: var(--white);
         color: var(--main);
         line-height: 1;
         cursor: pointer;
@@ -268,7 +192,7 @@ const hide = () => uiStore.hideNavigation()
 
         &:hover {
             border-color: var(--main);
-            background-color: var(--gray);
+            background-color: var(--gray-hover);
         }
     }
 
@@ -304,7 +228,7 @@ const hide = () => uiStore.hideNavigation()
 
         &:hover {
             border-color: var(--main);
-            background-color: var(--gray);
+            background-color: var(--gray-hover);
             transform: scale(1.2) translateX(2px);
         }
 
@@ -312,6 +236,27 @@ const hide = () => uiStore.hideNavigation()
             opacity: 0;
             pointer-events: none;
             transform: scaleX(0) translateX(-100%);
+        }
+    }
+
+    &__footer {
+        display: flex;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    &__logout-button {
+        display: flex;
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid var(--gray);
+        border-radius: 8px;
+        background-color: var(--warning);
+        cursor: pointer;
+
+        &:hover {
+            border-color: var(--main);
+            background-color: var(--warning-hover);
         }
     }
 }

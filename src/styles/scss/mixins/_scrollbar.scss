@@ -1,10 +1,10 @@
 @mixin scrollbar(
     $show-on-hover: false,
     $track-color: var(--main-bg),
-    $scrollbar-width: var(--scrollbar-width),
     $thumb-color: #babac0,
     $thumb-hover-color: #9d9dd4,
     $thumb-active-color: #4b4bb9,
+    $scrollbar-width: var(--scrollbar-width),
     $hidden-corner: true
 ) {
     -webkit-overflow-scrolling: touch;

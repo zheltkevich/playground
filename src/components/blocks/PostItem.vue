@@ -22,5 +22,6 @@ defineProps({
     padding: 16px 18px;
     border: 1px solid var(--gray);
     border-radius: 16px;
+    background-color: var(--white);
 }
 </style>

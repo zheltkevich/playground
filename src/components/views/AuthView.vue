@@ -23,17 +23,21 @@ const submit = () => {
                 <input
                     class="auth-view__input"
                     type="password" />
-                <AppButton
-                    class="auth-view__submit"
-                    :loading="authStore.loading"
-                    @click="submit">
-                    Войти
-                </AppButton>
+                <div class="auth-view__buttons">
+                    <AppButton
+                        class="auth-view__button auth-view__button-submit"
+                        :loading="authStore.loading"
+                        @click="submit">
+                        Войти
+                    </AppButton>
+                    <AppButton
+                        class="auth-view__button auth-view__button-reg"
+                        @click="submit">
+                        Зарегистрироваться
+                    </AppButton>
+                </div>
             </form>
             <ul class="auth-view__links">
-                <li class="auth-view__link">
-                    <a href="#">Зарегистрироваться (инструкция)</a>
-                </li>
                 <li class="auth-view__link">
                     <a href="#">Забыли пароль?</a>
                 </li>
@@ -94,7 +98,15 @@ const submit = () => {
         }
     }
 
-    &__submit {
+    &__buttons {
+        display: flex;
+        column-gap: 8px;
+    }
+
+    &__button {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 80px;
         min-height: 20px;
         padding: 8px 16px;
         border: 1px solid var(--gray);

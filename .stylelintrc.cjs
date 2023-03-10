@@ -7,8 +7,9 @@ module.exports = {
     plugins: ['stylelint-order'],
     rules: {
         'declaration-no-important': true,
+        'declaration-block-no-redundant-longhand-properties': null,
         'alpha-value-notation': 'number',
-        // 'font-family-name-quotes': 'always-where-recommended',
+        'font-family-name-quotes': 'always-where-recommended',
         'at-rule-no-unknown': [
             true,
             {
@@ -21,14 +22,9 @@ module.exports = {
                 ignoreFunctions: ['map-get', 'map-merge', 'unquote'],
             },
         ],
-        // 'keyframes-name-pattern': null,
-
-        // 'declaration-block-no-redundant-longhand-properties': null,
-        // 'no-descending-specificity': null,
-
-        // 'selector-max-id': 0,
-        // 'selector-max-compound-selectors': 3,
-        // 'selector-class-pattern': ['^([a-z]+[\\-_a-z0-9]*[^\\-]|[a-z]+)$'],
+        'selector-max-id': 0,
+        'selector-max-compound-selectors': 3,
+        'selector-class-pattern': ['^([a-z]+[\\-_a-z0-9]*[^\\-]|[a-z]+)$'],
 
         'color-function-notation': 'modern',
         'color-hex-length': 'long',

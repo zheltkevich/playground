@@ -21,6 +21,7 @@ import SideNavigation from '@blocks/SideNavigation.vue'
 <style lang="scss">
 $header-height: 48px;
 
+/* stylelint-disable-next-line selector-max-id */
 #app {
     display: flex;
     flex-direction: column;
@@ -28,11 +29,13 @@ $header-height: 48px;
     min-height: 100vh;
     background-color: var(--main-bg);
 
+    /* stylelint-disable-next-line selector-max-id */
     > header {
         z-index: 20;
         min-height: 48px;
     }
 
+    /* stylelint-disable-next-line selector-max-id */
     > main {
         position: relative;
         display: flex;

@@ -30,8 +30,7 @@ const burgerClick = () => {
             <AppButton
                 class="main-header__burger"
                 @click="burgerClick">
-                <IconBurgerMenu
-                    :active="uiStore.isNavigationOpened"></IconBurgerMenu>
+                <IconBurgerMenu :active="uiStore.isNavigationOpened" />
             </AppButton>
         </div>
     </header>
@@ -41,7 +40,6 @@ const burgerClick = () => {
 .main-header {
     position: sticky;
     top: 0;
-    z-index: 20;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,18 +83,12 @@ const burgerClick = () => {
     }
 
     &__burger {
-        border: 1px solid var(--gray);
         border-radius: 8px;
-        background-color: var(--main-bg);
-        color: var(--main);
+        background-color: var(--main);
+        color: var(--white);
 
         @media (min-width: 768px) {
             display: none;
-        }
-
-        &:hover {
-            border-color: var(--main);
-            background-color: var(--gray);
         }
     }
 }

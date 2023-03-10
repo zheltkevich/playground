@@ -24,7 +24,7 @@ const postsList = computed(() => {
 
         <ul class="posts-list__list">
             <AppLoader
-                v-if="true"
+                v-if="postsStore.loading"
                 class="posts-list__loader" />
             <PostItem
                 v-for="(item, i) in postsList"

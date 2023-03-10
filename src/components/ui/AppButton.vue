@@ -19,40 +19,42 @@ const emit = defineEmits(['click'])
 
 const pushed = ref(false)
 
-const mousedown = () => {
-    pushed.value = true
-}
-const mouseup = () => {
-    pushed.value = false
-}
-const click = () => {
-    emit('click')
-}
+const mousedown = () => (pushed.value = true)
+const mouseup = () => (pushed.value = false)
+const mouseleave = () => (pushed.value = false)
+const touchstart = () => (pushed.value = true)
+const touchend = () => (pushed.value = false)
+const click = () => emit('click')
 </script>
 
 <template>
     <button
         class="app-button"
-        :class="{ pushed }"
+        :class="{ pushed, loading }"
         :type="type"
         :disabled="disabled"
         @mousedown="mousedown"
         @mouseup="mouseup"
-        @click="click">
-        <span
-            v-if="loading"
-            class="app-button__preloader-container">
+        @touchstart="touchstart"
+        @touchend="touchend"
+        @click="click"
+        @mouseleave="mouseleave">
+        <span class="app-button__loader-container">
             <AppLoader
+                class="app-button__loader"
                 size="100%"
                 type="small">
             </AppLoader>
         </span>
-        <slot v-else></slot>
+        <span class="app-button__slot">
+            <slot />
+        </span>
     </button>
 </template>
 
 <style lang="scss">
 .app-button {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,12 +71,31 @@ const click = () => {
         opacity: 0.6;
     }
 
-    &__preloader-container {
+    &__loader-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        width: 16px;
+        height: 16px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) translateY(-50%);
+
+        .app-button.loading & {
+            opacity: 1;
+        }
+    }
+
+    &__slot {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 16px;
-        height: 16px;
+        opacity: 1;
+
+        .app-button.loading & {
+            opacity: 0;
+        }
     }
 }
 </style>

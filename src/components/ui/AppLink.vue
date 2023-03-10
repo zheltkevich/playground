@@ -21,6 +21,9 @@ const pushed = ref(false)
 
 const mousedown = () => (pushed.value = true)
 const mouseup = () => (pushed.value = false)
+const mouseleave = () => (pushed.value = false)
+const touchstart = () => (pushed.value = true)
+const touchend = () => (pushed.value = false)
 const click = () => emit('click')
 </script>
 
@@ -32,6 +35,9 @@ const click = () => emit('click')
         :disabled="disabled"
         @mousedown="mousedown"
         @mouseup="mouseup"
+        @mouseleave="mouseleave"
+        @touchstart="touchstart"
+        @touchend="touchend"
         @click="click">
         <slot></slot>
     </router-link>
