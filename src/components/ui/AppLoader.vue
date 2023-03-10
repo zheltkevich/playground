@@ -15,10 +15,13 @@ const props = defineProps({
 </script>
 
 <template>
-    <div
-        class="app-loader"
+    <span
         :style="[`--loader-size: ${size};`]"
-        :class="[props.type]"></div>
+        class="app-loader-box">
+        <span
+            class="app-loader"
+            :class="[props.type]"></span>
+    </span>
 </template>
 
 <style lang="scss">
@@ -42,49 +45,62 @@ const props = defineProps({
     }
 }
 
-.app-loader.big {
-    position: relative;
-    z-index: 11;
-    display: block;
+.app-loader-box {
+    position: absolute;
+    display: flex;
     width: var(--loader-size);
     height: var(--loader-size);
-    border: 3px solid transparent;
-    border-top-color: #16a085;
-    border-radius: 50%;
-    animation: spin 1.7s linear infinite;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        bottom: 5px;
-        left: 5px;
-        border: 3px solid transparent;
-        border-top-color: #e74c3c;
-        border-radius: 50%;
-        animation: spin-reverse 0.6s linear infinite;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        bottom: 15px;
-        left: 15px;
-        border: 3px solid transparent;
-        border-top-color: #f9c922;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
 }
 
-.app-loader.small {
-    width: var(--loader-size);
-    height: var(--loader-size);
-    border: 2px dashed var(--main);
-    border-radius: 50%;
-    animation: spin 1.7s linear infinite;
+.app-loader {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    &.big {
+        border: 3px solid transparent;
+
+        // border-top-color: var(--main);
+        // border-bottom-color: var(--main);
+        border-radius: 50%;
+        animation: spin 1.7s linear infinite;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            bottom: 5px;
+            left: 5px;
+            border: 3px solid transparent;
+            border-top-color: var(--main);
+            border-bottom-color: var(--main);
+            border-radius: 50%;
+            animation: spin-reverse 0.6s linear infinite;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            bottom: 15px;
+            left: 15px;
+            border: 3px solid transparent;
+            border-top-color: var(--main);
+            border-bottom-color: var(--main);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    &.small {
+        width: var(--loader-size);
+        height: var(--loader-size);
+        border: 2px dashed var(--main);
+        border-radius: 50%;
+        animation: spin 1.7s linear infinite;
+    }
 }
 </style>

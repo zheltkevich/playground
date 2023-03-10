@@ -40,7 +40,8 @@ const burgerClick = () => {
 <style lang="scss">
 .main-header {
     position: sticky;
-    z-index: 1;
+    top: 0;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     justify-content: center;

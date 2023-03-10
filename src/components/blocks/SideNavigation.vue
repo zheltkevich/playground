@@ -23,6 +23,106 @@ const NAVIGATION_ITEMS = [
         to: 'auth',
         title: 'Auth page',
     },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
+    {
+        to: 'auth',
+        title: 'Auth page',
+    },
 ]
 
 const navigationItems = ref(NAVIGATION_ITEMS)
@@ -48,6 +148,12 @@ const hide = () => uiStore.hideNavigation()
             @click="hide">
             ✕
         </AppButton>
+        <AppButton
+            type="button"
+            class="side-navigation__expand-button"
+            @click="show">
+            &#5125;
+        </AppButton>
         <h2 class="side-navigation__title">{{ $route.name }}</h2>
         <div class="side-navigation__wrapper">
             <ul class="side-navigation__list">
@@ -66,12 +172,6 @@ const hide = () => uiStore.hideNavigation()
         </div>
         <AppButton
             type="button"
-            class="side-navigation__expand-button"
-            @click="show">
-            &#5125;
-        </AppButton>
-        <AppButton
-            type="button"
             class="side-navigation__logout-button"
             @click="logOut">
             Logout
@@ -81,22 +181,33 @@ const hide = () => uiStore.hideNavigation()
 
 <style lang="scss">
 .side-navigation {
-    z-index: 1;
+    position: fixed;
+    z-index: 10;
     display: flex;
     flex-shrink: 0;
     flex-direction: column;
-    padding: 16px;
+    row-gap: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
     border-right: 1px solid var(--gray);
     background-color: #e4e4e4;
 
     &__title {
-        margin-bottom: 16px;
+        padding-right: 16px;
+        padding-left: 16px;
         word-wrap: break-word;
     }
 
     &__wrapper {
         position: relative;
         display: flex;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding-right: 16px;
+        padding-left: 16px;
+
+        // /* stylelint-disable-next-line at-rule-no-unknown */
+        @include scrollbar(false, #e4e4e4);
     }
 
     &__list {
@@ -104,6 +215,8 @@ const hide = () => uiStore.hideNavigation()
         flex-grow: 1;
         flex-direction: column;
         row-gap: 8px;
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     &__item {

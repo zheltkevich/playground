@@ -24,7 +24,7 @@ const postsList = computed(() => {
 
         <ul class="posts-list__list">
             <AppLoader
-                v-if="postsStore.loading"
+                v-if="true"
                 class="posts-list__loader" />
             <PostItem
                 v-for="(item, i) in postsList"
@@ -45,7 +45,7 @@ const postsList = computed(() => {
         position: relative;
         display: flex;
         flex-direction: column;
-        row-gap: 8px;
+        row-gap: 16px;
     }
 
     &__loader {

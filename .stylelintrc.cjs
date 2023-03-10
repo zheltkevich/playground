@@ -4,22 +4,25 @@ module.exports = {
         'stylelint-config-standard-scss',
         'stylelint-config-recommended-vue',
     ],
-    plugins: ['stylelint-scss', 'stylelint-order'],
+    plugins: ['stylelint-order'],
     rules: {
+        'declaration-no-important': true,
         'alpha-value-notation': 'number',
         // 'font-family-name-quotes': 'always-where-recommended',
-        // 'function-no-unknown': [true,
-        //     {
-        //         ignoreFunctions: [
-        //             'map-get',
-        //             'map-merge',
-        //             'unquote',
-        //         ],
-        //     },
-        // ],
+        'at-rule-no-unknown': [
+            true,
+            {
+                ignoreAtRules: ['include', 'mixin', 'if'],
+            },
+        ],
+        'function-no-unknown': [
+            true,
+            {
+                ignoreFunctions: ['map-get', 'map-merge', 'unquote'],
+            },
+        ],
         // 'keyframes-name-pattern': null,
 
-        // 'declaration-no-important': true,
         // 'declaration-block-no-redundant-longhand-properties': null,
         // 'no-descending-specificity': null,
 
@@ -27,13 +30,11 @@ module.exports = {
         // 'selector-max-compound-selectors': 3,
         // 'selector-class-pattern': ['^([a-z]+[\\-_a-z0-9]*[^\\-]|[a-z]+)$'],
 
-        // 'color-function-notation': 'modern',
+        'color-function-notation': 'modern',
         'color-hex-length': 'long',
-        // 'color-named': 'never',
+        'color-named': 'never',
 
-        // stylelint-scss
-        // 'scss/at-rule-no-unknown': true,
-        // 'scss/at-import-partial-extension': 'always',
+        'scss/at-import-partial-extension': 'always',
         // 'scss/at-import-no-partial-leading-underscore': null,
         // 'scss/selector-no-redundant-nesting-selector': null,
         // 'scss/no-global-function-names': null,
