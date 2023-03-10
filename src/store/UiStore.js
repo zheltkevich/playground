@@ -5,6 +5,7 @@ export const useUiStore = defineStore('uiStore', {
         navigation: {
             isOpened: false,
         },
+        scrollDisabled: false,
     }),
     getters: {
         isNavigationOpened() {

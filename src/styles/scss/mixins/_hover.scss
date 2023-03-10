@@ -1,0 +1,13 @@
+@mixin hover() {
+    @media (hover: hover), (-ms-high-contrast: none) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin touch {
+    @media (pointer: coarse) {
+        @content;
+    }
+}

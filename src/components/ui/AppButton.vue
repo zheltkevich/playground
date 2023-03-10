@@ -73,8 +73,10 @@ const click = () => emit('click')
         pointer-events: none;
     }
 
-    &:hover:not(:disabled, .disabled) {
-        cursor: pointer;
+    &:not(:disabled, .disabled) {
+        @include hover {
+            cursor: pointer;
+        }
     }
 
     &.pushed {

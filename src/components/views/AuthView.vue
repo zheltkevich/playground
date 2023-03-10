@@ -81,8 +81,11 @@ const submit = () => {
         transition: 0.2s ease-out;
         transition-property: border-color;
 
-        &:focus,
-        &:hover {
+        @include hover {
+            border-color: var(--main);
+        }
+
+        &:focus {
             border-color: var(--main);
             outline: none;
         }
@@ -104,23 +107,29 @@ const submit = () => {
         background-color: var(--main-bg);
         line-height: 16px;
 
-        &:hover:not(.disabled) {
-            border-color: var(--main);
+        &:not(.disabled) {
+            @include hover {
+                border-color: var(--main);
+            }
         }
 
         &--submit {
             background-color: var(--access);
 
-            &:hover:not(.disabled) {
-                background-color: var(--access-hover);
+            &:not(.disabled) {
+                @include hover {
+                    background-color: var(--access-hover);
+                }
             }
         }
 
         &--reg {
             background-color: var(--white);
 
-            &:hover:not(.disabled) {
-                background-color: var(--gray-hover);
+            &:not(.disabled) {
+                @include hover {
+                    background-color: var(--gray-hover);
+                }
             }
         }
     }

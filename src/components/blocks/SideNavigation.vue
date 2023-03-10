@@ -152,7 +152,7 @@ const setActive = (item) => {
         background-color: var(--white);
         cursor: pointer;
 
-        &:hover {
+        @include hover {
             border-color: var(--main);
             background-color: var(--gray-hover);
         }
@@ -182,17 +182,17 @@ const setActive = (item) => {
         line-height: 1;
         cursor: pointer;
 
+        @include hover {
+            border-color: var(--main);
+            background-color: var(--gray-hover);
+        }
+
         @media (min-width: 768px) {
             display: flex;
         }
 
         @media (min-width: 1024px) {
             display: none;
-        }
-
-        &:hover {
-            border-color: var(--main);
-            background-color: var(--gray-hover);
         }
     }
 
@@ -218,18 +218,18 @@ const setActive = (item) => {
         transition-property: opacity, background-color, border-color, transform;
         transform: scaleX(1) translateX(0);
 
+        @include hover {
+            border-color: var(--main);
+            background-color: var(--gray-hover);
+            transform: scale(1.2) translateX(2px);
+        }
+
         @media (min-width: 768px) {
             display: flex;
         }
 
         @media (min-width: 1024px) {
             display: none;
-        }
-
-        &:hover {
-            border-color: var(--main);
-            background-color: var(--gray-hover);
-            transform: scale(1.2) translateX(2px);
         }
 
         .side-navigation.expanded & {
@@ -254,7 +254,7 @@ const setActive = (item) => {
         background-color: var(--warning);
         cursor: pointer;
 
-        &:hover {
+        @include hover {
             border-color: var(--main);
             background-color: var(--warning-hover);
         }
