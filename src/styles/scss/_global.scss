@@ -17,6 +17,7 @@ body {
     overflow-x: hidden;
     margin: unset;
     font-family: 'Open Sans', sans-serif;
+    scroll-behavior: smooth;
 
     @include scrollbar;
 }

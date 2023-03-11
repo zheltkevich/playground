@@ -8,6 +8,7 @@ import AppInput from '@ui/AppInput.vue'
 onMounted(() => {
     postsStore.fetchPosts()
 })
+
 const postsStore = usePostsStore()
 
 const searchValue = ref('')
