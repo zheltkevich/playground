@@ -6,7 +6,7 @@ module.exports = {
     endOfLine: 'lf',
     vueIndentScriptAndStyle: false,
     proseWrap: 'preserve',
-    arrowParens: 'always',
+    arrowParens: 'avoid',
     bracketSameLine: true,
     bracketSpacing: true,
     quoteProps: 'consistent',

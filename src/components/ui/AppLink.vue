@@ -17,13 +17,13 @@ defineProps({
 })
 
 const emit = defineEmits(['click'])
-const pushed = ref(false)
+const active = ref(false)
 
-const mousedown = () => (pushed.value = true)
-const mouseup = () => (pushed.value = false)
-const mouseleave = () => (pushed.value = false)
-const touchstart = () => (pushed.value = true)
-const touchend = () => (pushed.value = false)
+const mousedown = () => (active.value = true)
+const mouseup = () => (active.value = false)
+const mouseleave = () => (active.value = false)
+const touchstart = () => (active.value = true)
+const touchend = () => (active.value = false)
 const click = () => emit('click')
 </script>
 
@@ -31,7 +31,7 @@ const click = () => emit('click')
     <router-link
         :to="{ path: to }"
         class="app-link"
-        :class="[{ pushed }, type]"
+        :class="[{ active }, type]"
         :disabled="disabled"
         @mousedown="mousedown"
         @mouseup="mouseup"
@@ -58,14 +58,8 @@ const click = () => emit('click')
         text-decoration: none;
     }
 
-    &.pushed {
+    &.active {
         opacity: 0.6;
-    }
-
-    svg {
-        .app-link.pushed & {
-            opacity: 0.6;
-        }
     }
 }
 </style>

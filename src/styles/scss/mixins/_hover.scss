@@ -5,9 +5,3 @@
         }
     }
 }
-
-@mixin touch {
-    @media (pointer: coarse) {
-        @content;
-    }
-}

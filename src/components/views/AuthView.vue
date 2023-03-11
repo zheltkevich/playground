@@ -25,12 +25,13 @@ const submit = () => {
                     type="password" />
                 <div class="auth-view__buttons">
                     <AppButton
-                        class="auth-view__button auth-view__button--submit"
+                        class="auth-view__button auth-view__button--submit btn-access"
                         :loading="authStore.loading"
                         @click="submit">
                         Войти
                     </AppButton>
-                    <AppButton class="auth-view__button auth-view__button--reg">
+                    <AppButton
+                        class="auth-view__button auth-view__button--reg btn">
                         Зарегистрироваться
                     </AppButton>
                 </div>
@@ -104,7 +105,6 @@ const submit = () => {
         padding: 8px 16px;
         border: 1px solid var(--gray);
         border-radius: 8px;
-        background-color: var(--main-bg);
         line-height: 16px;
 
         &:not(.disabled) {
@@ -119,16 +119,6 @@ const submit = () => {
             &:not(.disabled) {
                 @include hover {
                     background-color: var(--access-hover);
-                }
-            }
-        }
-
-        &--reg {
-            background-color: var(--white);
-
-            &:not(.disabled) {
-                @include hover {
-                    background-color: var(--gray-hover);
                 }
             }
         }

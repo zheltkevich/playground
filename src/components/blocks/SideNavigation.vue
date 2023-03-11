@@ -37,9 +37,9 @@ const logOut = () => {
 
 const show = () => uiStore.showNavigation()
 const hide = () => uiStore.hideNavigation()
-const setActive = (item) => {
+const setSelected = item => {
     return {
-        active: item.to === route.name,
+        selected: item.to === route.name,
     }
 }
 </script>
@@ -68,11 +68,11 @@ const setActive = (item) => {
                 <li
                     v-for="(item, i) in navigationItems"
                     :key="i"
-                    class="side-navigation__item"
-                    :class="setActive(item)">
+                    class="side-navigation__item">
                     <AppLink
                         :to="item.to"
-                        class="side-navigation__item-button"
+                        class="side-navigation__item-button btn"
+                        :class="setSelected(item)"
                         type="button">
                         {{ item.title }}
                     </AppLink>
@@ -82,7 +82,7 @@ const setActive = (item) => {
         <footer class="side-navigation__footer">
             <AppButton
                 type="button"
-                class="side-navigation__logout-button"
+                class="side-navigation__logout-button btn-warning"
                 @click="logOut">
                 Logout
             </AppButton>
@@ -144,23 +144,11 @@ const setActive = (item) => {
     }
 
     &__item-button {
-        display: flex;
         flex-grow: 1;
         padding: 8px;
         border: 1px solid var(--gray);
         border-radius: 8px;
         background-color: var(--white);
-        cursor: pointer;
-
-        @include hover {
-            border-color: var(--main);
-            background-color: var(--gray-hover);
-        }
-
-        .side-navigation__item.active & {
-            border-color: var(--main);
-            color: var(--main);
-        }
     }
 
     &__close-button {
@@ -251,13 +239,6 @@ const setActive = (item) => {
         padding: 8px;
         border: 1px solid var(--gray);
         border-radius: 8px;
-        background-color: var(--warning);
-        cursor: pointer;
-
-        @include hover {
-            border-color: var(--main);
-            background-color: var(--warning-hover);
-        }
     }
 }
 </style>

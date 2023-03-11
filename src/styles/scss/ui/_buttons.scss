@@ -1,0 +1,86 @@
+.btn {
+    border-color: var(--gray);
+    background-color: var(--white);
+
+    @include hover {
+        border-color: var(--main);
+        background-color: var(--gray-hover);
+        cursor: pointer;
+    }
+
+    :disabled,
+    &.disabled {
+        pointer-events: none;
+    }
+
+    &:not(:disabled, .disabled) {
+        @include hover {
+            cursor: pointer;
+        }
+    }
+
+    &.active {
+        border-color: var(--main);
+        background-color: var(--gray);
+        opacity: 0.6;
+    }
+
+    &.selected {
+        border-color: var(--main);
+        color: var(--main);
+    }
+}
+
+.btn-access {
+    border-color: var(--gray);
+    background-color: var(--access);
+
+    @include hover {
+        border-color: var(--main);
+        background-color: var(--access-hover);
+        cursor: pointer;
+    }
+
+    :disabled,
+    &.disabled {
+        pointer-events: none;
+    }
+
+    &:not(:disabled, .disabled) {
+        @include hover {
+            cursor: pointer;
+        }
+    }
+
+    &.active {
+        border-color: var(--main);
+        opacity: 0.6;
+    }
+}
+
+.btn-warning {
+    border-color: var(--gray);
+    background-color: var(--warning);
+
+    @include hover {
+        border-color: var(--main);
+        background-color: var(--warning-hover);
+        cursor: pointer;
+    }
+
+    :disabled,
+    &.disabled {
+        pointer-events: none;
+    }
+
+    &:not(:disabled, .disabled) {
+        @include hover {
+            cursor: pointer;
+        }
+    }
+
+    &.active {
+        border-color: var(--main);
+        opacity: 0.6;
+    }
+}

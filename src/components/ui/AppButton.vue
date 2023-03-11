@@ -4,44 +4,60 @@ import AppLoader from '@ui/AppLoader.vue'
 const props = defineProps({
     type: {
         type: String,
-        default: 'button',
+        default: () => 'button',
     },
     disabled: {
         type: Boolean,
-        default: false,
+        default: () => false,
+    },
+    selected: {
+        type: Boolean,
+        default: () => false,
     },
     loading: {
         type: Boolean,
-        default: false,
+        default: () => false,
+    },
+    styles: {
+        type: Object,
+        default: () => ({}),
     },
 })
 const emit = defineEmits(['click'])
-const pushed = ref(false)
+const active = ref(false)
 
 const isDisabled = computed(() => {
     return props.disabled || props.loading
 })
 
-const mousedown = () => (pushed.value = true)
-const mouseup = () => (pushed.value = false)
-const mouseleave = () => (pushed.value = false)
-const touchstart = () => (pushed.value = true)
-const touchend = () => (pushed.value = false)
-const click = () => emit('click')
+const classes = computed(() => {
+    return {
+        disabled: isDisabled.value,
+        selected: props.selected,
+        loading: props.loading,
+        active: active.value,
+    }
+})
+
+const listeners = computed(() => {
+    return {
+        mousedown: () => (active.value = true),
+        mouseup: () => (active.value = false),
+        mouseleave: () => (active.value = false),
+        touchstart: () => (active.value = true),
+        touchend: () => (active.value = false),
+        click: () => emit('click'),
+    }
+})
 </script>
 
 <template>
     <button
         class="app-button"
-        :class="{ pushed, loading, disabled: isDisabled }"
+        :class="classes"
         :type="type"
         :disabled="isDisabled"
-        @mousedown="mousedown"
-        @mouseup="mouseup"
-        @touchstart="touchstart"
-        @touchend="touchend"
-        @click="click"
-        @mouseleave="mouseleave">
+        v-on="listeners">
         <span class="app-button__loader-container">
             <AppLoader
                 class="app-button__loader"
@@ -66,20 +82,9 @@ const click = () => emit('click')
     user-select: none;
     transition-timing-function: ease-out;
     transition-duration: 0.1s;
-    transition-property: color, background-color, opacity, border-color,
-        transform;
+    transition-property: color, background-color, opacity, border-color;
 
-    :disabled {
-        pointer-events: none;
-    }
-
-    &:not(:disabled, .disabled) {
-        @include hover {
-            cursor: pointer;
-        }
-    }
-
-    &.pushed {
+    &.active {
         opacity: 0.6;
     }
 
