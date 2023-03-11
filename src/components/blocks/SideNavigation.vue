@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useUiStore } from '@store/UiStore.js'
 import { useAuthStore } from '@store/AuthStore.js'
 import { useRouter, useRoute } from 'vue-router'
@@ -26,17 +26,23 @@ const NAVIGATION_ITEMS = [
 ]
 
 const navigationItems = ref(NAVIGATION_ITEMS)
-const uiStore = useUiStore()
+
 const authStore = useAuthStore()
 const router = useRouter()
 const route = useRoute()
+
 const logOut = () => {
     authStore.logOut()
     router.push({ name: 'auth' })
 }
 
+const uiStore = useUiStore()
+const expanded = computed(() => {
+    return uiStore.isNavigationOpened
+})
 const show = () => uiStore.showNavigation()
 const hide = () => uiStore.hideNavigation()
+
 const setSelected = item => {
     return {
         selected: item.to === route.name,
@@ -47,7 +53,7 @@ const setSelected = item => {
 <template>
     <aside
         class="side-navigation"
-        :class="{ expanded: uiStore.isNavigationOpened }">
+        :class="{ expanded }">
         <AppButton
             class="side-navigation__close-button"
             type="button"
