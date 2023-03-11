@@ -3,13 +3,14 @@ import { ref, computed, onMounted } from 'vue'
 import { usePostsStore } from '@store/PostsStore.js'
 import PostItem from '@blocks/PostItem.vue'
 import AppLoader from '@ui/AppLoader.vue'
+import AppInput from '@ui/AppInput.vue'
 
 onMounted(() => {
     postsStore.fetchPosts()
 })
-const searchValue = ref('')
-
 const postsStore = usePostsStore()
+
+const searchValue = ref('')
 const postsList = computed(() => {
     if (searchValue.value) {
         return postsStore.getPosts.filter(post =>
@@ -18,14 +19,19 @@ const postsList = computed(() => {
     }
     return postsStore.getPosts
 })
+
+const inputValueHandler = val => {
+    searchValue.value = val
+}
 </script>
 
 <template>
     <div class="posts-list">
         <h2 class="posts-list__title">Posts list</h2>
-        <input
-            v-model="searchValue"
-            type="text" />
+        <AppInput
+            type="text"
+            placeholder="Search"
+            @input="inputValueHandler" />
 
         <ul class="posts-list__list">
             <AppLoader

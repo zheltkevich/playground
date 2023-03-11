@@ -1,6 +1,7 @@
 <script setup>
 import AppButton from '@ui/AppButton.vue'
 import { useAuthStore } from '@store/AuthStore'
+import AppInput from '@ui/AppInput.vue'
 
 const authStore = useAuthStore()
 
@@ -17,12 +18,14 @@ const submit = () => {
                 class="auth-view__form"
                 action=""
                 @submit.prevent>
-                <input
+                <AppInput
                     class="auth-view__input"
-                    type="text" />
-                <input
+                    type="email"
+                    placeholder="Login" />
+                <AppInput
                     class="auth-view__input"
-                    type="password" />
+                    type="password"
+                    placeholder="Password" />
                 <div class="auth-view__buttons">
                     <AppButton
                         class="auth-view__button auth-view__button--submit btn-access"
@@ -76,6 +79,7 @@ const submit = () => {
     }
 
     &__input {
+        flex-shrink: 0;
         padding: 8px;
         border: 1px solid var(--gray);
         border-radius: 8px;
