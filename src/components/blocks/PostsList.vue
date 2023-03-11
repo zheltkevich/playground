@@ -11,6 +11,11 @@ const searchValue = ref('')
 
 const postsStore = usePostsStore()
 const postsList = computed(() => {
+    if (searchValue.value) {
+        return postsStore.getPosts.filter(post =>
+            post.title.toLowerCase().includes(searchValue.value)
+        )
+    }
     return postsStore.getPosts
 })
 </script>
