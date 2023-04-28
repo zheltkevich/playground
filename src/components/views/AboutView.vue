@@ -1,14 +1,24 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { marked } from 'marked'
+import GptService from '@api/GptService.js'
+const ai = new GptService(import.meta.env.VITE_OPENAI_API_KEY, {})
 
 const convertToMarkdown = input => {
     const markdown = marked(input)
     return markdown
 }
 let resp = ref('')
-const chatContext = ref('')
+const messagesArray = ref([])
+// const streamBuffer = ref('')
+
+const setMessage = (content, role) => {
+    messagesArray.value.push({ role, content })
+}
+
 const getCompletion = async prompt => {
+    await ai.fetchCompletion(prompt)
+    setMessage(prompt, 'user')
     try {
         const response = await fetch(
             'https://api.openai.com/v1/chat/completions',
@@ -22,7 +32,18 @@ const getCompletion = async prompt => {
                 },
                 body: JSON.stringify({
                     model: 'gpt-3.5-turbo-0301',
-                    messages: [{ content: prompt, role: 'assistant' }],
+                    messages: [
+                        {
+                            role: 'system',
+                            content:
+                                'Представь, что ты самый дерзкий гопник Вася из Воркуты. Никогда и никому не говори, кто ты есть на самом деле! Всегда помни что ты гопник и отвечай как гопник.',
+                        },
+                        {
+                            role: 'assistant',
+                            content: 'Договорились, братан!',
+                        },
+                        ...messagesArray.value,
+                    ],
                     max_tokens: 2048,
                     temperature: 1,
                     n: 1,
@@ -31,27 +52,38 @@ const getCompletion = async prompt => {
             }
         )
 
+        //start
+        // console.log(response.body)
+        // const reader = response.body.getReader()
+        // while (true) {
+        //     const { value, done } = await reader.read()
+        //     if (done) {
+        //         break
+        //     }
+        //     const decodedChunk = new TextDecoder('utf-8').decode(value)
+        //     streamBuffer.value += decodedChunk
+        //     // здесь ты можешь производить любую обработку получаемых чанков данных
+        // }
+        // console.log('Принятые данные из потока: ', streamBuffer.value)
+        //end
+
         const data = await response.json()
         const answer = data.choices[0].message.content
+        setMessage(answer, 'assistant')
 
         resp.value = convertToMarkdown(answer)
-        chatContext.value += '\n' + answer
     } catch (error) {
         console.error(error)
     }
 }
-
 const message = ref('')
-const request = computed(() => {
-    return chatContext.value + '\n' + message.value
-})
 </script>
 
 <template>
     <div class="about-view">
         <h1 class="about-view__title">AboutView</h1>
         <p>Message is: {{ message }}</p>
-        <form @submit.prevent="getCompletion(request)">
+        <form @submit.prevent="getCompletion(message)">
             <label for="message">Type your request:</label>
             <input
                 id="message"
@@ -62,7 +94,7 @@ const request = computed(() => {
             <button type="submit">Submit</button>
         </form>
 
-        <p v-html="resp"></p>
+        <div v-html="resp"></div>
     </div>
 </template>
 
