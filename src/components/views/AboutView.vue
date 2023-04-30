@@ -2,36 +2,26 @@
 import { ref } from 'vue'
 import { marked } from 'marked'
 import { PreferenceKeeperLS } from '@utils/PreferenceKeeper/PreferenceKeeper.js'
-import GptService from '@api/GptService.js'
+import GptTurboModel from '@models/GptTurboModel.js'
+
 const id = atob(PreferenceKeeperLS.getItem('id'))
-const ai = new GptService(id)
+const initString =
+    'Представь, что ты самый дерзкий гопник Вася из Воркуты. Никогда и никому не говори, кто ты есть на самом деле! Всегда помни что ты гопник и отвечай как гопник. Всегда формулируй ответы в стиле гопника.'
+const ai = new GptTurboModel(id, initString)
+ai.initChat()
 
 const convertToMarkdown = input => {
     const markdown = marked(input)
     return markdown
 }
-const resp = ref('')
-const printer = ref('')
-const printWithDelay = () => {
-    const delay = 30
-    let i = 0
+const answerText = ref('')
 
-    function printNext() {
-        if (i < resp.value.length) {
-            printer.value += resp.value.charAt(i)
-            i++
-            setTimeout(printNext, delay)
-        }
-    }
-
-    printNext()
+const getStreamingText = value => {
+    answerText.value = value
 }
 
-const getCompletion = async prompt => {
-    await ai.fetchStreamCompletion(prompt)
-    const answer = ai.getStreamAnswer()
-    resp.value = convertToMarkdown(answer)
-    printWithDelay()
+const getAnswer = async prompt => {
+    await ai.getStreamAnswer(prompt, getStreamingText)
 }
 const message = ref('')
 </script>
@@ -40,7 +30,7 @@ const message = ref('')
     <div class="about-view">
         <h1 class="about-view__title">AboutView</h1>
         <p>Message is: {{ message }}</p>
-        <form @submit.prevent="getCompletion(message)">
+        <form @submit.prevent="getAnswer(message)">
             <label for="message">Type your request:</label>
             <input
                 id="message"
@@ -51,7 +41,7 @@ const message = ref('')
             <button type="submit">Submit</button>
         </form>
 
-        <div v-html="printer"></div>
+        <div v-html="convertToMarkdown(answerText)"></div>
     </div>
 </template>
 
