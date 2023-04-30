@@ -6,6 +6,7 @@ export const useAuthStore = defineStore('authStore', {
     state: () => ({
         isLoggedIn: false,
         loading: false,
+        password: '',
     }),
     actions: {
         async login() {
@@ -14,12 +15,14 @@ export const useAuthStore = defineStore('authStore', {
                 this.isLoggedIn = true
                 router.replace({ name: 'home' })
                 this.loading = false
+                PreferenceKeeperLS.setItem('id', this.password)
                 PreferenceKeeperLS.setItem('loggedIn', this.isLoggedIn)
             }, 1000)
         },
         logOut() {
             this.isLoggedIn = false
             router.replace({ name: 'auth' })
+            PreferenceKeeperLS.deleteItem('id')
             PreferenceKeeperLS.deleteItem('loggedIn')
         },
         fetchLogin() {
@@ -33,6 +36,9 @@ export const useAuthStore = defineStore('authStore', {
             setTimeout(() => {
                 return true
             }, 1000)
+        },
+        setPassword(password) {
+            this.password = btoa(password)
         },
     },
     getters: {

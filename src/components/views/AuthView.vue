@@ -4,6 +4,9 @@ import { useAuthStore } from '@store/AuthStore'
 import AppInput from '@ui/AppInput.vue'
 
 const authStore = useAuthStore()
+const passwordHandler = value => {
+    authStore.setPassword(value)
+}
 
 const submit = () => {
     authStore.login()
@@ -25,7 +28,8 @@ const submit = () => {
                 <AppInput
                     class="auth-view__input"
                     type="password"
-                    placeholder="Password" />
+                    placeholder="Password"
+                    @input="passwordHandler" />
                 <div class="auth-view__buttons">
                     <AppButton
                         class="auth-view__button auth-view__button--submit btn-access"

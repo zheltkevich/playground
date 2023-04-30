@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import { marked } from 'marked'
+import { PreferenceKeeperLS } from '@utils/PreferenceKeeper/PreferenceKeeper.js'
 import GptService from '@api/GptService.js'
-const ai = new GptService(import.meta.env.VITE_OPENAI_API_KEY, {})
+const id = atob(PreferenceKeeperLS.getItem('id'))
+const ai = new GptService(id)
 
 const convertToMarkdown = input => {
     const markdown = marked(input)
