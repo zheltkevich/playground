@@ -88,6 +88,12 @@ const listeners = computed(() => {
         opacity: 0.6;
     }
 
+    &.disabled,
+    &[disabled] {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
     &__loader-container {
         position: absolute;
         top: 50%;

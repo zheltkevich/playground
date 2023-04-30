@@ -7,6 +7,7 @@ export const useAuthStore = defineStore('authStore', {
         isLoggedIn: false,
         loading: false,
         password: '',
+        loginAllowed: false,
     }),
     actions: {
         async login() {
@@ -39,6 +40,12 @@ export const useAuthStore = defineStore('authStore', {
         },
         setPassword(password) {
             this.password = btoa(password)
+
+            if (password.length < 40) this.loginAllowed = false
+            else this.loginAllowed = true
+        },
+        isLoginAllowed() {
+            return this.loginAllowed
         },
     },
     getters: {

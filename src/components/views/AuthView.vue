@@ -9,31 +9,34 @@ const passwordHandler = value => {
 }
 
 const submit = () => {
-    authStore.login()
+    if (authStore.loginAllowed) authStore.login()
 }
 </script>
 
 <template>
     <div class="auth-view">
         <div class="auth-view__container">
-            <h1 class="auth-view__title">Личный кабинет</h1>
+            <h1 class="auth-view__title">Привет</h1>
+            <p>Для работы чата нужен апи-ключ openAi</p>
             <form
                 class="auth-view__form"
                 action=""
-                @submit.prevent>
-                <AppInput
+                @submit.prevent="submit">
+                <!-- <AppInput
                     class="auth-view__input"
                     type="email"
-                    placeholder="Login" />
+                    placeholder="Login" /> -->
                 <AppInput
                     class="auth-view__input"
-                    type="password"
+                    type="openAi apiKey"
                     placeholder="Password"
                     @input="passwordHandler" />
                 <div class="auth-view__buttons">
                     <AppButton
+                        type="submit"
                         class="auth-view__button auth-view__button--submit btn-access"
                         :loading="authStore.loading"
+                        :disabled="!authStore.loginAllowed"
                         @click="submit">
                         Войти
                     </AppButton>
@@ -43,14 +46,14 @@ const submit = () => {
                     </AppButton>
                 </div>
             </form>
-            <ul class="auth-view__links">
+            <!-- <ul class="auth-view__links">
                 <li class="auth-view__link">
                     <a href="#">Забыли пароль?</a>
                 </li>
                 <li class="auth-view__link">
                     <a href="#">Обратиться в службу поддержки</a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </template>
@@ -129,6 +132,10 @@ const submit = () => {
                     background-color: var(--access-hover);
                 }
             }
+        }
+
+        &--reg {
+            display: none;
         }
     }
 

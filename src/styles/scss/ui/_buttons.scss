@@ -3,20 +3,17 @@
     background-color: var(--white);
 
     @include hover {
-        border-color: var(--main);
-        background-color: var(--gray-hover);
-        cursor: pointer;
+        &:not(:disabled, .disabled) {
+            border-color: var(--main);
+            background-color: var(--gray-hover);
+            cursor: pointer;
+        }
     }
 
     :disabled,
     &.disabled {
-        pointer-events: none;
-    }
-
-    &:not(:disabled, .disabled) {
-        @include hover {
-            cursor: pointer;
-        }
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 
     &.active {
@@ -36,20 +33,17 @@
     background-color: var(--access);
 
     @include hover {
-        border-color: var(--main);
-        background-color: var(--access-hover);
-        cursor: pointer;
+        &:not(:disabled, .disabled) {
+            border-color: var(--main);
+            background-color: var(--access-hover);
+            cursor: pointer;
+        }
     }
 
     :disabled,
     &.disabled {
-        pointer-events: none;
-    }
-
-    &:not(:disabled, .disabled) {
-        @include hover {
-            cursor: pointer;
-        }
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 
     &.active {
@@ -63,20 +57,17 @@
     background-color: var(--warning);
 
     @include hover {
-        border-color: var(--main);
-        background-color: var(--warning-hover);
-        cursor: pointer;
+        &:not(:disabled, .disabled) {
+            border-color: var(--main);
+            background-color: var(--warning-hover);
+            cursor: pointer;
+        }
     }
 
     :disabled,
     &.disabled {
-        pointer-events: none;
-    }
-
-    &:not(:disabled, .disabled) {
-        @include hover {
-            cursor: pointer;
-        }
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 
     &.active {
