@@ -86,6 +86,12 @@ const setSelected = item => {
             </ul>
         </div>
         <footer class="side-navigation__footer">
+            <AppLink
+                :to="'about'"
+                class="side-navigation__item-button btn"
+                type="button">
+                About
+            </AppLink>
             <AppButton
                 type="button"
                 class="side-navigation__logout-button btn-warning"

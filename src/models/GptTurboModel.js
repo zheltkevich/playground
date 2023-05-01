@@ -2,11 +2,11 @@ export default class GptTurboModel {
     #baseUrl = 'https://api.openai.com/v1/chat/completions'
     #defaultSettings = {}
     #bodySettings = {}
+    #serviceMessages = []
     #messages = []
-    initialPrompt = ''
     answer = ''
 
-    constructor(apiKey, initialPrompt = '') {
+    constructor(apiKey) {
         this.#defaultSettings = {
             method: 'POST',
             headers: {
@@ -22,14 +22,13 @@ export default class GptTurboModel {
             messages: [],
             stream: false,
         }
-        this.initialPrompt = initialPrompt
     }
 
-    initChat(messages = []) {
+    initChat(initialPrompt = '', messages = []) {
         const defaultConfigMessages = [
             {
                 role: 'system',
-                content: this.initialPrompt,
+                content: initialPrompt,
             },
             {
                 role: 'assistant',
@@ -37,13 +36,23 @@ export default class GptTurboModel {
             },
         ]
 
-        if (this.initialPrompt.length > 0) {
-            this.#bodySettings.messages.push(...defaultConfigMessages)
+        if (initialPrompt.length > 0) {
+            this.#serviceMessages = defaultConfigMessages
+            this.#bodySettings.messages.push(...this.#serviceMessages)
         }
 
         if (messages.length > 0) {
-            this.#bodySettings.messages.push(...messages)
+            this.#messages.push(...messages)
+            this.#bodySettings.messages.push(...this.#messages)
         }
+    }
+
+    getMessages() {
+        return this.#messages
+    }
+
+    getLastMessage() {
+        return this.#messages[this.#messages.length - 1]
     }
 
     async getAnswer(prompt) {
@@ -97,7 +106,10 @@ export default class GptTurboModel {
                 .filter(line => line.trim())
 
             lines.forEach(line => {
-                if (line.includes('DONE')) return
+                if (line.includes('DONE')) {
+                    callback(this.answer, true)
+                    return
+                }
 
                 const preparedString = `{${this.#_parseStreamingString(line)}}`
                 const lineObject = JSON.parse(preparedString)
@@ -105,7 +117,7 @@ export default class GptTurboModel {
 
                 if (delta?.content) {
                     this.answer += delta.content
-                    callback(this.answer)
+                    callback(this.answer, false)
                 }
             })
 
@@ -128,6 +140,10 @@ export default class GptTurboModel {
     }
 
     #_updateMessages(role, content) {
+        this.#messages.push({
+            role,
+            content,
+        })
         this.#bodySettings.messages.push({
             role,
             content,
