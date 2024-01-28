@@ -22,6 +22,7 @@ export default defineConfig({
             '@utils': path.resolve(__dirname, './src/utils'),
             '@models': path.resolve(__dirname, './src/models'),
             '@router': path.resolve(__dirname, './src/router'),
+            '@js': path.resolve(__dirname, './src/js'),
         },
     },
     plugins: [
