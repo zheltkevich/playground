@@ -23,6 +23,10 @@ const NAVIGATION_ITEMS = [
         to: 'auth',
         title: 'Auth page',
     },
+    {
+        to: 'post_checking',
+        title: 'Post checking',
+    },
 ]
 
 const navigationItems = ref(NAVIGATION_ITEMS)
@@ -79,7 +83,8 @@ const setSelected = item => {
                         :to="item.to"
                         class="side-navigation__item-button btn"
                         :class="setSelected(item)"
-                        type="button">
+                        type="button"
+                        @click="hide">
                         {{ item.title }}
                     </AppLink>
                 </li>

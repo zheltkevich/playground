@@ -28,6 +28,12 @@ const router = createRouter({
             meta: { requiresAuth: false },
         },
         {
+            path: '/post_checking',
+            name: 'post_checking',
+            component: () => import('@views/PostCheckingView.vue'),
+            meta: { requiresAuth: false },
+        },
+        {
             path: '/:pathMatch(.*)',
             name: 'error',
             component: () => import('@views/ErrorView.vue'),
